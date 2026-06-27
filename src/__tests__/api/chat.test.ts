@@ -24,16 +24,27 @@ function geminiReply(text: string) {
   };
 }
 
+function geminiError(status = 400) {
+  return {
+    ok: false,
+    status,
+    text: async () => `{"error":{"message":"API error ${status}"}}`,
+  };
+}
+
 describe("POST /api/chat", () => {
   const originalKey = process.env.GEMINI_API_KEY;
 
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.spyOn(console, "error").mockImplementation(() => {});
+    jest.spyOn(console, "warn").mockImplementation(() => {});
     process.env.GEMINI_API_KEY = "test-gemini-key";
   });
 
   afterEach(() => {
     process.env.GEMINI_API_KEY = originalKey;
+    jest.restoreAllMocks();
   });
 
   it("returns 200 and reply for valid POST", async () => {
@@ -49,7 +60,7 @@ describe("POST /api/chat", () => {
     expect(data.reply).toBe("Hello! I can help with IT services.");
   });
 
-  it("calls Gemini API URL with the API key as query param", async () => {
+  it("calls v1 Gemini endpoint with gemini-1.5-flash first", async () => {
     mockFetch.mockResolvedValueOnce(geminiReply("OK"));
 
     const req = makeRequest({ messages: [{ role: "user", content: "Test" }] });
@@ -57,9 +68,50 @@ describe("POST /api/chat", () => {
 
     const calledUrl: string = mockFetch.mock.calls[0][0];
     expect(calledUrl).toMatch(
-      /generativelanguage\.googleapis\.com\/v1beta\/models\/gemini-1\.5-flash:generateContent/
+      /generativelanguage\.googleapis\.com\/v1\/models\/gemini-1\.5-flash:generateContent/
     );
     expect(calledUrl).toContain("key=test-gemini-key");
+  });
+
+  it("falls back to gemini-pro when gemini-1.5-flash fails", async () => {
+    mockFetch
+      .mockResolvedValueOnce(geminiError(404))  // flash fails
+      .mockResolvedValueOnce(geminiReply("Fallback response"));  // pro succeeds
+
+    const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
+    const res = await POST(req);
+    const data = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(data.reply).toBe("Fallback response");
+
+    const fallbackUrl: string = mockFetch.mock.calls[1][0];
+    expect(fallbackUrl).toContain("gemini-pro");
+  });
+
+  it("returns 500 when both models fail", async () => {
+    mockFetch
+      .mockResolvedValueOnce(geminiError(404))
+      .mockResolvedValueOnce(geminiError(429));
+
+    const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
+    const res = await POST(req);
+    expect(res.status).toBe(500);
+  });
+
+  it("logs Gemini error response when API call fails", async () => {
+    mockFetch
+      .mockResolvedValueOnce(geminiError(400))
+      .mockResolvedValueOnce(geminiError(400));
+
+    const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
+    await POST(req);
+
+    expect(console.error).toHaveBeenCalledWith(
+      "Gemini error:",
+      400,
+      expect.any(String)
+    );
   });
 
   it("sends system instruction and correct Gemini body format", async () => {
@@ -69,12 +121,8 @@ describe("POST /api/chat", () => {
     await POST(req);
 
     const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
-
-    // System prompt in systemInstruction
     expect(callBody.systemInstruction.parts[0].text).toMatch(/Alentro/);
     expect(callBody.systemInstruction.parts[0].text).toMatch(/\+91-7045400592/);
-
-    // User message mapped correctly
     expect(callBody.contents[0]).toEqual({
       role: "user",
       parts: [{ text: "Test" }],
@@ -124,16 +172,8 @@ describe("POST /api/chat", () => {
     expect(res.status).toBe(400);
   });
 
-  it("returns 500 when Gemini API returns non-ok response", async () => {
-    mockFetch.mockResolvedValueOnce({ ok: false, status: 429 });
-
-    const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
-    const res = await POST(req);
-    expect(res.status).toBe(500);
-  });
-
   it("returns 500 when fetch throws a network error", async () => {
-    mockFetch.mockRejectedValueOnce(new Error("Network failure"));
+    mockFetch.mockRejectedValue(new Error("Network failure"));
 
     const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
     const res = await POST(req);

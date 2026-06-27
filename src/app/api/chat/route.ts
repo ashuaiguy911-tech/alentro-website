@@ -3,6 +3,43 @@ import { NextRequest, NextResponse } from "next/server";
 const SYSTEM_PROMPT =
   "You are Alentro, the AI assistant for Alentro Global Services, an IT solutions company in India. You help visitors with questions about IT infrastructure, AMC services, cloud services (AWS, Azure, GCP), cybersecurity, helpdesk, and network management. Be professional, concise, and helpful. If asked about pricing, suggest they visit the Contact page or call +91-7045400592. Keep responses under 150 words.";
 
+function buildGeminiUrl(model: string, apiKey: string) {
+  return `https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${apiKey}`;
+}
+
+function buildGeminiBody(messages: Array<{ role: string; content: string }>) {
+  return JSON.stringify({
+    contents: messages.map((m) => ({
+      role: m.role === "assistant" ? "model" : "user",
+      parts: [{ text: m.content }],
+    })),
+    systemInstruction: {
+      parts: [{ text: SYSTEM_PROMPT }],
+    },
+    generationConfig: {
+      maxOutputTokens: 300,
+      temperature: 0.7,
+    },
+  });
+}
+
+async function callGemini(model: string, apiKey: string, messages: Array<{ role: string; content: string }>) {
+  const response = await fetch(buildGeminiUrl(model, apiKey), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: buildGeminiBody(messages),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("Gemini error:", response.status, errorText);
+    return null;
+  }
+
+  const data = await response.json();
+  return data.candidates?.[0]?.content?.parts?.[0]?.text ?? null;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -22,37 +59,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
+    const apiKey = process.env.GEMINI_API_KEY;
 
-    const response = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: messages.map((m: { role: string; content: string }) => ({
-          role: m.role === "assistant" ? "model" : "user",
-          parts: [{ text: m.content }],
-        })),
-        systemInstruction: {
-          parts: [{ text: SYSTEM_PROMPT }],
-        },
-        generationConfig: {
-          maxOutputTokens: 300,
-          temperature: 0.7,
-        },
-      }),
-    });
+    // Try gemini-1.5-flash first, fall back to gemini-pro
+    let reply = await callGemini("gemini-1.5-flash", apiKey, messages);
 
-    if (!response.ok) {
-      throw new Error(`Gemini API error: ${response.status}`);
+    if (!reply) {
+      console.warn("gemini-1.5-flash failed, trying gemini-pro fallback");
+      reply = await callGemini("gemini-pro", apiKey, messages);
     }
 
-    const data = await response.json();
-    const reply =
-      data.candidates?.[0]?.content?.parts?.[0]?.text ??
-      "I'm sorry, I couldn't generate a response.";
+    if (!reply) {
+      return NextResponse.json(
+        { error: "Failed to get response from Gemini" },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ reply });
-  } catch {
+  } catch (err) {
+    console.error("Chat API error:", err);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
