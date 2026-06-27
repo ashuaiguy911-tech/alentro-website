@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ChatWidget } from "@/components/chat";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -9,6 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://alentroglobal.com"),
   title: "Alentro Global Services | IT Solutions India",
   description:
     "Alentro Global Services provides end-to-end IT solutions to businesses across India — IT Infrastructure, AMC, Helpdesk, Cloud Services (AWS, Azure, GCP), Cybersecurity, and more.",
@@ -55,7 +57,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen flex flex-col antialiased">{children}</body>
+      <body className="min-h-screen flex flex-col antialiased">
+        {children}
+        <ChatWidget />
+      </body>
     </html>
   );
 }
