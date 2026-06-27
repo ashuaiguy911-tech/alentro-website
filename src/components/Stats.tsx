@@ -1,48 +1,56 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
+import { Users, MapPin, Briefcase, Calendar } from "lucide-react";
 
-const stats = [
-  { value: "500+", label: "Clients Served", sublabel: "Across India" },
-  { value: "10+", label: "Years Experience", sublabel: "In IT Services" },
-  { value: "99.9%", label: "Uptime SLA", sublabel: "Guaranteed" },
-  { value: "24/7", label: "Support", sublabel: "Always Available" },
+const trustItems = [
+  { icon: Users, value: "2–10", label: "Employees" },
+  { icon: MapPin, value: "Pan-India", label: "Coverage" },
+  { icon: Briefcase, value: "IT Services", label: "& IT Consulting" },
+  { icon: Calendar, value: "2024", label: "Founded" },
 ];
 
 export default function Stats() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const reduced = useReducedMotion() ?? false;
 
   return (
     <section
-      className="py-16 lg:py-20"
-      style={{ background: "var(--color-primary)" }}
-      aria-label="Company statistics"
+      className="py-5 border-b border-white/10"
+      style={{ background: "var(--color-secondary-navy)" }}
+      aria-label="Company information"
       ref={ref}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-              className="text-center"
-            >
-              <div
-                className="text-4xl lg:text-5xl font-bold mb-2"
-                style={{ color: "var(--color-accent-light)" }}
+        <div className="flex flex-wrap items-center justify-center gap-0 divide-x divide-white/10">
+          {trustItems.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={item.label}
+                initial={reduced ? false : { opacity: 0, y: 10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: i * 0.08, ease: "easeOut" }}
+                className="flex items-center gap-2.5 px-6 py-3.5"
               >
-                {stat.value}
-              </div>
-              <div className="text-white font-semibold text-base lg:text-lg">
-                {stat.label}
-              </div>
-              <div className="text-white/50 text-sm mt-0.5">{stat.sublabel}</div>
-            </motion.div>
-          ))}
+                <Icon
+                  size={15}
+                  className="shrink-0"
+                  style={{ color: "var(--color-accent-light)" }}
+                  aria-hidden="true"
+                />
+                <span
+                  className="text-sm font-semibold"
+                  style={{ color: "var(--color-accent-light)" }}
+                >
+                  {item.value}
+                </span>
+                <span className="text-white/50 text-sm">{item.label}</span>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

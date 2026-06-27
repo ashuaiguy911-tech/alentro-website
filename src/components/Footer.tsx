@@ -1,4 +1,10 @@
+"use client";
+
+import type { Variants } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const quickLinks = [
@@ -16,6 +22,20 @@ const serviceLinks = [
   "Cybersecurity Solutions",
   "IT Consulting",
 ];
+
+const columns: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const col: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 function LinkedInIcon() {
   return (
@@ -43,57 +63,71 @@ function FacebookIcon() {
 }
 
 export default function Footer() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const reduced = useReducedMotion() ?? false;
+
   return (
     <footer
-      className="pt-16 pb-8"
+      className="pt-14 pb-8"
       style={{ background: "var(--color-primary)" }}
       aria-label="Site footer"
+      ref={ref}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10"
+          variants={reduced ? {} : columns}
+          initial={reduced ? false : "hidden"}
+          animate={inView ? "visible" : "hidden"}
+        >
           {/* Company info */}
-          <div>
-            <div className="text-white font-bold text-xl mb-1">Alentro</div>
-            <div className="text-white/60 font-light text-sm mb-4">
-              Global Services
-            </div>
-            <p className="text-white/50 text-sm leading-relaxed mb-6">
-              End-to-End IT Solutions. Delivered with Excellence. Serving
-              businesses across India since 2014.
+          <motion.div variants={reduced ? {} : col}>
+            <Link href="/" aria-label="Alentro Global Services - Home" className="inline-block mb-3">
+              <Image
+                src="/logo.png"
+                alt="Alentro Global Services"
+                width={160}
+                height={60}
+                className="object-contain"
+                style={{ height: "40px", width: "auto", filter: "brightness(0) invert(1)" }}
+              />
+            </Link>
+            <p className="text-white/70 text-sm leading-relaxed italic mb-1">
+              Reliable. Scalable. Secure.
+            </p>
+            <p className="text-white/50 text-sm leading-relaxed mb-5">
+              Your IT. Our Responsibility.
             </p>
             <div className="flex gap-3" aria-label="Social media links">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-accent flex items-center justify-center text-white/70 hover:text-white transition-all duration-200 cursor-pointer"
-                aria-label="LinkedIn"
-              >
-                <LinkedInIcon />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-accent flex items-center justify-center text-white/70 hover:text-white transition-all duration-200 cursor-pointer"
-                aria-label="Twitter / X"
-              >
-                <TwitterIcon />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-accent flex items-center justify-center text-white/70 hover:text-white transition-all duration-200 cursor-pointer"
-                aria-label="Facebook"
-              >
-                <FacebookIcon />
-              </a>
+              {[
+                { href: "https://linkedin.com", label: "LinkedIn", Icon: LinkedInIcon },
+                { href: "https://twitter.com", label: "Twitter / X", Icon: TwitterIcon },
+                { href: "https://facebook.com", label: "Facebook", Icon: FacebookIcon },
+              ].map(({ href, label, Icon }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-white/70 transition-colors duration-200 cursor-pointer"
+                  aria-label={label}
+                  whileHover={
+                    reduced
+                      ? {}
+                      : { scale: 1.15, backgroundColor: "var(--color-accent)" }
+                  }
+                  whileTap={reduced ? {} : { scale: 0.92 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                >
+                  <Icon />
+                </motion.a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick links */}
-          <div>
+          <motion.div variants={reduced ? {} : col}>
             <h3 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">
               Quick Links
             </h3>
@@ -109,10 +143,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
+          <motion.div variants={reduced ? {} : col}>
             <h3 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">
               Our Services
             </h3>
@@ -128,50 +162,68 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div>
+          <motion.div variants={reduced ? {} : col}>
             <h3 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">
               Contact Us
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Phone size={16} className="text-accent mt-0.5 shrink-0" aria-hidden="true" />
+                <Phone
+                  size={16}
+                  className="mt-0.5 shrink-0"
+                  style={{ color: "var(--color-accent-light)" }}
+                  aria-hidden="true"
+                />
                 <a
-                  href="tel:+918268196705"
+                  href="tel:+917045400592"
                   className="text-white/60 hover:text-white text-sm transition-colors duration-200 cursor-pointer"
                 >
-                  +91-8268196705
+                  +91-7045400592
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Mail size={16} className="text-accent mt-0.5 shrink-0" aria-hidden="true" />
+                <Mail
+                  size={16}
+                  className="mt-0.5 shrink-0"
+                  style={{ color: "var(--color-accent-light)" }}
+                  aria-hidden="true"
+                />
                 <a
-                  href="mailto:info@alentroglobal.com"
-                  className="text-white/60 hover:text-white text-sm transition-colors duration-200 cursor-pointer"
+                  href="mailto:jennifersenekar123@gmail.com"
+                  className="text-white/60 hover:text-white text-sm transition-colors duration-200 cursor-pointer break-all"
                 >
-                  info@alentroglobal.com
+                  jennifersenekar123@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={16} className="text-accent mt-0.5 shrink-0" aria-hidden="true" />
+                <MapPin
+                  size={16}
+                  className="mt-0.5 shrink-0"
+                  style={{ color: "var(--color-accent-light)" }}
+                  aria-hidden="true"
+                />
                 <span className="text-white/60 text-sm leading-relaxed">
                   Pan-India Operations, India
                 </span>
               </li>
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-white/30 text-xs">
+        <motion.div
+          className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-white/30 text-xs"
+          initial={reduced ? false : { opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <span>
             &copy; {new Date().getFullYear()} Alentro Global Services. All rights reserved.
           </span>
-          <span>
-            IT Solutions Company &bull; India
-          </span>
-        </div>
+          <span>IT Solutions Company &bull; India</span>
+        </motion.div>
       </div>
     </footer>
   );

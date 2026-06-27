@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import type { Variants } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { Star } from "lucide-react";
 
@@ -34,6 +35,22 @@ const testimonials = [
   },
 ];
 
+const container: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.14 },
+  },
+};
+
+const card: Variants = {
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 function StarRating() {
   return (
     <div className="flex gap-1" aria-label="5 out of 5 stars">
@@ -53,6 +70,7 @@ function StarRating() {
 export default function Testimonials() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const reduced = useReducedMotion() ?? false;
 
   return (
     <section
@@ -62,7 +80,7 @@ export default function Testimonials() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={reduced ? false : { opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
@@ -82,14 +100,20 @@ export default function Testimonials() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          variants={reduced ? {} : container}
+          initial={reduced ? false : "hidden"}
+          animate={inView ? "visible" : "hidden"}
+        >
+          {testimonials.map((t) => (
             <motion.figure
               key={t.name}
-              initial={{ opacity: 0, y: 28 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-bg-alt rounded-xl p-7 border border-border hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col"
+              variants={reduced ? {} : card}
+              whileHover={
+                reduced ? {} : { y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }
+              }
+              className="bg-bg-alt rounded-xl p-7 border border-border hover:border-accent/30 hover:shadow-lg transition-[border-color,box-shadow] duration-300 flex flex-col"
             >
               <StarRating />
               <blockquote className="mt-4 text-text text-sm leading-relaxed flex-1">
@@ -104,9 +128,7 @@ export default function Testimonials() {
                   {t.initials}
                 </div>
                 <div>
-                  <div className="font-semibold text-primary text-sm">
-                    {t.name}
-                  </div>
+                  <div className="font-semibold text-primary text-sm">{t.name}</div>
                   <div className="text-text-muted text-xs">
                     {t.title}, {t.company}
                   </div>
@@ -115,7 +137,7 @@ export default function Testimonials() {
               </figcaption>
             </motion.figure>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

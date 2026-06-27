@@ -15,14 +15,14 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+91-8268196705",
-    href: "tel:+918268196705",
+    value: "+91-7045400592",
+    href: "tel:+917045400592",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "info@alentroglobal.com",
-    href: "mailto:info@alentroglobal.com",
+    value: "jennifersenekar123@gmail.com",
+    href: "mailto:jennifersenekar123@gmail.com",
   },
   {
     icon: MapPin,
@@ -130,7 +130,7 @@ export default function ContactPage() {
                     WhatsApp us for quick support or to schedule a call.
                   </p>
                   <a
-                    href="https://wa.me/918268196705"
+                    href="https://wa.me/917045400592"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-[#25D366] text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-opacity hover:opacity-90 cursor-pointer"

@@ -1,80 +1,81 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import Link from "next/link";
+import type { Variants } from "framer-motion";
 import {
-  Server,
-  ClipboardList,
-  Users,
-  Headphones,
-  Network,
-  Shield,
-  Cloud,
-  UserPlus,
-  Lightbulb,
-} from "lucide-react";
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
+import { useRef, useCallback } from "react";
+import Link from "next/link";
+import { services } from "@/data/services";
 
-export const services = [
-  {
-    icon: Server,
-    name: "IT Infrastructure Setup",
-    description:
-      "Complete end-to-end infrastructure design and deployment — servers, storage, networking, and workstations tailored to your business scale.",
+const cardContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+
+const cardVariant: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 260, damping: 22 },
   },
-  {
-    icon: ClipboardList,
-    name: "Annual Maintenance Contracts (AMC)",
-    description:
-      "Comprehensive AMC plans covering hardware, software, and network maintenance to keep your IT assets running at peak performance.",
-  },
-  {
-    icon: Users,
-    name: "In-House IT Support",
-    description:
-      "Dedicated on-site IT professionals embedded within your organisation to provide immediate, expert technical assistance.",
-  },
-  {
-    icon: Headphones,
-    name: "Helpdesk Services",
-    description:
-      "Multi-tier helpdesk support with rapid ticket resolution, SLA tracking, and seamless escalation paths for your team.",
-  },
-  {
-    icon: Network,
-    name: "Network and Server Management",
-    description:
-      "Proactive monitoring, configuration, and optimisation of your LAN/WAN infrastructure, routers, switches, and servers.",
-  },
-  {
-    icon: Shield,
-    name: "Firewall and Cybersecurity Solutions",
-    description:
-      "Enterprise-grade firewall deployment, vulnerability assessment, intrusion detection, and end-to-end security policy implementation.",
-  },
-  {
-    icon: Cloud,
-    name: "Cloud Services (AWS, Azure, GCP)",
-    description:
-      "Cloud migration, architecture design, cost optimisation, and managed cloud operations across AWS, Microsoft Azure, and Google Cloud.",
-  },
-  {
-    icon: UserPlus,
-    name: "Staff Augmentation",
-    description:
-      "Flexible IT talent solutions to supplement your team — from short-term project needs to long-term managed staffing.",
-  },
-  {
-    icon: Lightbulb,
-    name: "IT Consulting",
-    description:
-      "Strategic IT advisory to align technology investments with your business goals, roadmaps, and digital transformation initiatives.",
-  },
-];
+};
+
+function TiltCard({
+  children,
+  reduced,
+}: {
+  children: React.ReactNode;
+  reduced: boolean;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (reduced || !cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      rotateX.set(-((e.clientY - rect.top) / rect.height - 0.5) * 8);
+      rotateY.set(((e.clientX - rect.left) / rect.width - 0.5) * 8);
+    },
+    [reduced, rotateX, rotateY]
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    rotateX.set(0);
+    rotateY.set(0);
+  }, [rotateX, rotateY]);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={
+        (reduced
+          ? { borderRadius: "var(--radius-card)", borderLeftColor: "var(--color-accent)" }
+          : { rotateX, rotateY, transformStyle: "preserve-3d", borderRadius: "var(--radius-card)", borderLeftColor: "var(--color-accent)" }
+        ) as React.CSSProperties
+      }
+      whileHover={reduced ? {} : { z: 8 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className="group bg-white rounded-xl border border-border border-l-4 hover:shadow-xl transition-[box-shadow] duration-300 cursor-default flex flex-col h-full overflow-hidden"
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function Services() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const reduced = useReducedMotion() ?? false;
 
   return (
     <section
@@ -85,17 +86,21 @@ export default function Services() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={reduced ? false : { opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <span className="text-accent font-semibold text-sm uppercase tracking-widest">
+          <span
+            className="font-semibold text-sm uppercase tracking-widest"
+            style={{ color: "var(--color-accent)" }}
+          >
             What We Do
           </span>
           <h2
             id="services-heading"
-            className="mt-3 text-3xl sm:text-4xl font-bold text-primary"
+            className="mt-3 text-3xl sm:text-4xl font-bold"
+            style={{ color: "var(--color-primary)" }}
           >
             Our IT Services
           </h2>
@@ -105,46 +110,93 @@ export default function Services() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, i) => {
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={reduced ? {} : cardContainer}
+          initial={reduced ? false : "hidden"}
+          animate={inView ? "visible" : "hidden"}
+        >
+          {services.map((service) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={service.name}
-                initial={{ opacity: 0, y: 28 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.45, delay: i * 0.07, ease: "easeOut" }}
-                className="group bg-white rounded-xl p-6 border border-border hover:border-accent/30 hover:shadow-xl transition-all duration-300 cursor-default flex flex-col"
-                style={{ borderRadius: "var(--radius-card)" }}
+                variants={reduced ? {} : cardVariant}
+                className="flex flex-col"
               >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-accent"
-                  style={{ background: "var(--color-navy-50)" }}
-                >
-                  <Icon
-                    size={22}
-                    className="text-accent group-hover:text-white transition-colors duration-300"
-                    aria-hidden="true"
-                  />
-                </div>
-                <h3 className="text-base font-semibold text-primary mb-2">
-                  {service.name}
-                </h3>
-                <p className="text-text-muted text-sm leading-relaxed flex-1">
-                  {service.description}
-                </p>
-                <Link
-                  href="/services"
-                  className="mt-4 text-accent font-medium text-sm hover:text-accent-dark inline-flex items-center gap-1 transition-colors duration-200 cursor-pointer"
-                  aria-label={`Learn more about ${service.name}`}
-                >
-                  Learn More
-                  <span aria-hidden="true" className="group-hover:translate-x-1 transition-transform duration-200 inline-block">→</span>
-                </Link>
+                <TiltCard reduced={reduced}>
+                  <div className="p-6 flex flex-col flex-1">
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-accent"
+                      style={{ background: "var(--color-navy-50)" }}
+                    >
+                      <Icon
+                        size={22}
+                        className="transition-colors duration-300 group-hover:text-white"
+                        style={{ color: "var(--color-accent)" }}
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <h3
+                      className="text-base font-semibold mb-2"
+                      style={{ color: "var(--color-primary)" }}
+                    >
+                      {service.name}
+                    </h3>
+                    <p className="text-text-muted text-sm leading-relaxed flex-1">
+                      {service.description}
+                    </p>
+                    <Link
+                      href="/services"
+                      className="mt-4 text-sm font-medium inline-flex items-center gap-1 transition-colors duration-200 cursor-pointer hover:opacity-80"
+                      style={{ color: "var(--color-accent)" }}
+                      aria-label={`Learn more about ${service.name}`}
+                    >
+                      Learn More
+                      <span
+                        aria-hidden="true"
+                        className="group-hover:translate-x-1 transition-transform duration-200 inline-block"
+                      >
+                        →
+                      </span>
+                    </Link>
+                  </div>
+                </TiltCard>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
+
+        {/* View All Services button */}
+        <motion.div
+          initial={reduced ? false : { opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <motion.div
+            whileHover={reduced ? {} : { scale: 1.04 }}
+            whileTap={reduced ? {} : { scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            className="inline-block"
+          >
+            <Link
+              href="/services"
+              className="inline-block text-white font-semibold px-8 py-3.5 rounded-xl text-sm transition-colors duration-200 cursor-pointer shadow-md hover:shadow-lg"
+              style={{ background: "var(--color-accent)" }}
+              onMouseEnter={(e) =>
+                ((e.currentTarget as HTMLElement).style.background =
+                  "var(--color-accent-dark)")
+              }
+              onMouseLeave={(e) =>
+                ((e.currentTarget as HTMLElement).style.background =
+                  "var(--color-accent)")
+              }
+            >
+              View All Services →
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

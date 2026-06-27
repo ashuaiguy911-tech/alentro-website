@@ -8,10 +8,12 @@ import Testimonials from "@/components/Testimonials";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 
 export default function Home() {
   return (
     <>
+      <ScrollProgressBar />
       <Navbar />
       <main>
         <Hero />

@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTABanner from "@/components/CTABanner";
-import { services } from "@/components/Services";
+import { services } from "@/data/services";
 import Link from "next/link";
 
 export const metadata: Metadata = {
