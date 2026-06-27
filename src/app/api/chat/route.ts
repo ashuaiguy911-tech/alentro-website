@@ -1,79 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-
-const SYSTEM_PROMPT =
-  "You are Alentro, the AI assistant for Alentro Global Services, an IT solutions company in India. You help visitors with questions about IT infrastructure, AMC services, cloud services (AWS, Azure, GCP), cybersecurity, helpdesk, and network management. Be professional, concise, and helpful. If asked about pricing, suggest they visit the Contact page or call +91-7045400592. Keep responses under 150 words.";
-
+const SYSTEM_PROMPT = "You are Alentro AI assistant for Alentro Global Services, an IT solutions company in India. Help with IT infrastructure, AMC, cloud services, cybersecurity, helpdesk. For pricing call +91-7045400592. Keep responses under 150 words.";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { messages } = body;
-
-    if (!messages || !Array.isArray(messages)) {
-      return NextResponse.json(
-        { error: "Invalid request body: messages array required" },
-        { status: 400 }
-      );
-    }
-
-    if (!process.env.GEMINI_API_KEY) {
-      return NextResponse.json(
-        { error: "Gemini API key not configured" },
-        { status: 500 }
-      );
-    }
-
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`;
-
-    const response = await fetch(url, {
+    if (!messages || !Array.isArray(messages)) return NextResponse.json({ error: "Invalid" }, { status: 400 });
+    if (!process.env.ANTHROPIC_API_KEY) return NextResponse.json({ error: "No key" }, { status: 500 });
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [
-          { role: "user", parts: [{ text: SYSTEM_PROMPT }] },
-          {
-            role: "model",
-            parts: [
-              {
-                text: "Understood! I am Alentro AI assistant. How can I help you?",
-              },
-            ],
-          },
-          ...messages.map((m: { role: string; content: string }) => ({
-            role: m.role === "assistant" ? "model" : "user",
-            parts: [{ text: m.content }],
-          })),
-        ],
-        generationConfig: {
-          maxOutputTokens: 300,
-          temperature: 0.7,
-        },
-      }),
+      headers: { "Content-Type": "application/json", "x-api-key": process.env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01" },
+      body: JSON.stringify({ model: "claude-haiku-4-5-20251001", max_tokens: 300, system: SYSTEM_PROMPT, messages: messages.map((m: {role: string; content: string}) => ({ role: m.role === "assistant" ? "assistant" : "user", content: m.content })) }),
     });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Gemini error:", response.status, errorText);
-      return NextResponse.json(
-        { error: "Failed to get response from Gemini" },
-        { status: 500 }
-      );
-    }
-
     const data = await response.json();
-    const reply =
-      data.candidates?.[0]?.content?.parts?.[0]?.text ??
-      "I'm sorry, I couldn't generate a response.";
-
+    const reply = data.content?.[0]?.text ?? "Sorry, try again.";
     return NextResponse.json({ reply });
-  } catch (err) {
-    console.error("Chat API error:", err);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
-    );
-  }
+  } catch { return NextResponse.json({ error: "Error" }, { status: 500 }); }
 }
-
-export async function GET() {
-  return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
-}
+export async function GET() { return NextResponse.json({ error: "Method not allowed" }, { status: 405 }); }
