@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     "IT services India, IT infrastructure, AMC, helpdesk, cloud services, AWS, Azure, cybersecurity, network management, IT consulting",
   authors: [{ name: "Alentro Global Services" }],
   creator: "Alentro Global Services",
+  verification: {
+    google: "z1mXmW6M_NsHpunXDZk5FRyiHx39_7kCgQwjTvAOpx8",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
