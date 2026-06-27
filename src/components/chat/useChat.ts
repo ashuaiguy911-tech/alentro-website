@@ -101,6 +101,21 @@ export function useChat() {
     }
   }, []);
 
+  const setWelcomeMessage = useCallback(() => {
+    setMessages((prev) => {
+      if (prev.length > 0) return prev;
+      return [
+        {
+          id: "welcome",
+          role: "assistant" as const,
+          content:
+            "Hi! I'm Alen, your AI assistant 👋 Have any questions about our IT services? I'm here to help! You can ask me about IT Infrastructure, AMC, Cloud Services, Cybersecurity, or anything else.",
+          timestamp: Date.now(),
+        },
+      ];
+    });
+  }, []);
+
   return {
     messages,
     sendMessage,
@@ -108,5 +123,6 @@ export function useChat() {
     error,
     messageCount: messages.length,
     clearChat,
+    setWelcomeMessage,
   };
 }

@@ -4,9 +4,10 @@ export interface ChatToggleProps {
   onClick: () => void;
   isOpen: boolean;
   unreadCount?: number;
+  pulse?: boolean;
 }
 
-export function ChatToggle({ onClick, isOpen, unreadCount = 0 }: ChatToggleProps) {
+export function ChatToggle({ onClick, isOpen, unreadCount = 0, pulse = false }: ChatToggleProps) {
   return (
     <button
       onClick={onClick}
@@ -14,6 +15,9 @@ export function ChatToggle({ onClick, isOpen, unreadCount = 0 }: ChatToggleProps
       aria-expanded={isOpen}
       className="w-14 h-14 rounded-full bg-indigo-600 hover:bg-indigo-700 shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer relative focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
     >
+      {pulse && (
+        <span className="absolute inset-0 rounded-full animate-ping bg-indigo-400 opacity-60 pointer-events-none" />
+      )}
       {isOpen ? (
         <svg
           width="20"

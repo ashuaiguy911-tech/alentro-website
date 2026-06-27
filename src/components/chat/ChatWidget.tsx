@@ -9,8 +9,9 @@ import { useChat, MAX_MESSAGES } from "./useChat";
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showPulse, setShowPulse] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const { messages, sendMessage, isLoading, error, messageCount, clearChat } =
+  const { messages, sendMessage, isLoading, error, messageCount, clearChat, setWelcomeMessage } =
     useChat();
 
   useEffect(() => {
@@ -18,6 +19,27 @@ export function ChatWidget() {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, isLoading, isOpen]);
+
+  // Pulse the chat bubble at 5 s to draw attention
+  useEffect(() => {
+    if (sessionStorage.getItem("alentro-chat-shown")) return;
+    const t = setTimeout(() => setShowPulse(true), 5000);
+    return () => clearTimeout(t);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Auto-open with welcome message at 10 s (once per session)
+  useEffect(() => {
+    if (sessionStorage.getItem("alentro-chat-shown")) return;
+    const t = setTimeout(() => {
+      sessionStorage.setItem("alentro-chat-shown", "1");
+      setShowPulse(false);
+      setIsOpen(true);
+      setWelcomeMessage();
+    }, 10000);
+    return () => clearTimeout(t);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const limitReached = messageCount >= MAX_MESSAGES;
 
@@ -186,8 +208,13 @@ export function ChatWidget() {
       </AnimatePresence>
 
       <ChatToggle
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={() => {
+          sessionStorage.setItem("alentro-chat-shown", "1");
+          setShowPulse(false);
+          setIsOpen((prev) => !prev);
+        }}
         isOpen={isOpen}
+        pulse={showPulse && !isOpen}
       />
     </div>
   );
