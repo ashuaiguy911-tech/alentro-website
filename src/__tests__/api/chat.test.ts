@@ -67,7 +67,7 @@ describe("POST /api/chat", () => {
 
     const calledUrl: string = mockFetch.mock.calls[0][0];
     expect(calledUrl).toMatch(
-      /generativelanguage\.googleapis\.com\/v1beta\/models\/gemini-1\.5-flash-latest:generateContent/
+      /generativelanguage\.googleapis\.com\/v1beta\/models\/gemini-pro:generateContent/
     );
     expect(calledUrl).toContain("key=test-gemini-key");
   });
