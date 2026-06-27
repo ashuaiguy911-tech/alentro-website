@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://alentro-website.vercel.app";
+  const baseUrl = "https://alentroglobal.com";
 
   return [
     {
