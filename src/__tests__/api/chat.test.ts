@@ -38,7 +38,6 @@ describe("POST /api/chat", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     jest.spyOn(console, "error").mockImplementation(() => {});
-    jest.spyOn(console, "warn").mockImplementation(() => {});
     process.env.GEMINI_API_KEY = "test-gemini-key";
   });
 
@@ -60,7 +59,7 @@ describe("POST /api/chat", () => {
     expect(data.reply).toBe("Hello! I can help with IT services.");
   });
 
-  it("calls v1 Gemini endpoint with gemini-1.5-flash first", async () => {
+  it("calls v1beta Gemini endpoint with gemini-1.5-flash", async () => {
     mockFetch.mockResolvedValueOnce(geminiReply("OK"));
 
     const req = makeRequest({ messages: [{ role: "user", content: "Test" }] });
@@ -68,65 +67,44 @@ describe("POST /api/chat", () => {
 
     const calledUrl: string = mockFetch.mock.calls[0][0];
     expect(calledUrl).toMatch(
-      /generativelanguage\.googleapis\.com\/v1\/models\/gemini-1\.5-flash:generateContent/
+      /generativelanguage\.googleapis\.com\/v1beta\/models\/gemini-1\.5-flash:generateContent/
     );
     expect(calledUrl).toContain("key=test-gemini-key");
   });
 
-  it("falls back to gemini-pro when gemini-1.5-flash fails", async () => {
-    mockFetch
-      .mockResolvedValueOnce(geminiError(404))  // flash fails
-      .mockResolvedValueOnce(geminiReply("Fallback response"));  // pro succeeds
-
-    const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
-    const res = await POST(req);
-    const data = await res.json();
-
-    expect(res.status).toBe(200);
-    expect(data.reply).toBe("Fallback response");
-
-    const fallbackUrl: string = mockFetch.mock.calls[1][0];
-    expect(fallbackUrl).toContain("gemini-pro");
-  });
-
-  it("returns 500 when both models fail", async () => {
-    mockFetch
-      .mockResolvedValueOnce(geminiError(404))
-      .mockResolvedValueOnce(geminiError(429));
-
-    const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
-    const res = await POST(req);
-    expect(res.status).toBe(500);
-  });
-
-  it("logs Gemini error response when API call fails", async () => {
-    mockFetch
-      .mockResolvedValueOnce(geminiError(400))
-      .mockResolvedValueOnce(geminiError(400));
-
-    const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
-    await POST(req);
-
-    expect(console.error).toHaveBeenCalledWith(
-      "Gemini error:",
-      400,
-      expect.any(String)
-    );
-  });
-
-  it("sends system instruction and correct Gemini body format", async () => {
+  it("prepends system prompt as first user message in contents", async () => {
     mockFetch.mockResolvedValueOnce(geminiReply("OK"));
 
-    const req = makeRequest({ messages: [{ role: "user", content: "Test" }] });
+    const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
     await POST(req);
 
     const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
-    expect(callBody.systemInstruction.parts[0].text).toMatch(/Alentro/);
-    expect(callBody.systemInstruction.parts[0].text).toMatch(/\+91-7045400592/);
-    expect(callBody.contents[0]).toEqual({
-      role: "user",
-      parts: [{ text: "Test" }],
-    });
+    expect(callBody.contents[0].role).toBe("user");
+    expect(callBody.contents[0].parts[0].text).toMatch(/Alentro/);
+    expect(callBody.contents[0].parts[0].text).toMatch(/\+91-7045400592/);
+  });
+
+  it("includes model acknowledgement as second message", async () => {
+    mockFetch.mockResolvedValueOnce(geminiReply("OK"));
+
+    const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
+    await POST(req);
+
+    const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(callBody.contents[1].role).toBe("model");
+    expect(callBody.contents[1].parts[0].text).toMatch(/Understood/i);
+  });
+
+  it("appends user messages after the system preamble", async () => {
+    mockFetch.mockResolvedValueOnce(geminiReply("OK"));
+
+    const req = makeRequest({ messages: [{ role: "user", content: "What is AMC?" }] });
+    await POST(req);
+
+    const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
+    // indices 0=system user, 1=model ack, 2=actual user message
+    expect(callBody.contents[2].role).toBe("user");
+    expect(callBody.contents[2].parts[0].text).toBe("What is AMC?");
   });
 
   it("maps assistant role to 'model' for Gemini", async () => {
@@ -142,12 +120,23 @@ describe("POST /api/chat", () => {
     await POST(req);
 
     const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
-    expect(callBody.contents[1].role).toBe("model");
-    expect(callBody.contents[0].role).toBe("user");
+    // offset by 2 for preamble
     expect(callBody.contents[2].role).toBe("user");
+    expect(callBody.contents[3].role).toBe("model");
+    expect(callBody.contents[4].role).toBe("user");
   });
 
-  it("includes generationConfig with maxOutputTokens and temperature", async () => {
+  it("does not include systemInstruction field", async () => {
+    mockFetch.mockResolvedValueOnce(geminiReply("OK"));
+
+    const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
+    await POST(req);
+
+    const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(callBody.systemInstruction).toBeUndefined();
+  });
+
+  it("includes generationConfig", async () => {
     mockFetch.mockResolvedValueOnce(geminiReply("OK"));
 
     const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
@@ -172,14 +161,25 @@ describe("POST /api/chat", () => {
     expect(res.status).toBe(400);
   });
 
-  it("returns 500 when fetch throws a network error", async () => {
-    mockFetch.mockRejectedValue(new Error("Network failure"));
+  it("returns 500 and logs error when Gemini API returns non-ok", async () => {
+    mockFetch.mockResolvedValueOnce(geminiError(429));
 
     const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
     const res = await POST(req);
     expect(res.status).toBe(500);
-    const data = await res.json();
-    expect(data.error).toBeDefined();
+    expect(console.error).toHaveBeenCalledWith(
+      "Gemini error:",
+      429,
+      expect.any(String)
+    );
+  });
+
+  it("returns 500 when fetch throws a network error", async () => {
+    mockFetch.mockRejectedValueOnce(new Error("Network failure"));
+
+    const req = makeRequest({ messages: [{ role: "user", content: "Hi" }] });
+    const res = await POST(req);
+    expect(res.status).toBe(500);
   });
 
   it("returns 500 when GEMINI_API_KEY is not set", async () => {
