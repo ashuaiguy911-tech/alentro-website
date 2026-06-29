@@ -13,24 +13,24 @@ export const metadata: Metadata = {
   keywords:
     "about Alentro Global Services, IT company Mumbai history, IT solutions company India, Mumbai IT company since 2014, managed IT services Mumbai",
   alternates: {
-    canonical: "https://alentroglobal.com/about",
+    canonical: "https://alentro-website.vercel.app/about",
   },
 };
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://alentroglobal.com/#organization",
+  "@id": "https://alentro-website.vercel.app/#organization",
   name: "Alentro Global Services",
   legalName: "Alentro Global Services",
-  url: "https://alentroglobal.com",
+  url: "https://alentro-website.vercel.app",
   logo: {
     "@type": "ImageObject",
-    url: "https://alentroglobal.com/logo.png",
+    url: "https://alentro-website.vercel.app/logo.png",
     width: 160,
     height: 60,
   },
-  image: "https://alentroglobal.com/og-image.png",
+  image: "https://alentro-website.vercel.app/og-image.png",
   description:
     "Alentro Global Services is a trusted IT company in Mumbai, India, founded in 2014. We deliver end-to-end IT solutions — infrastructure, cloud, cybersecurity, AMC, helpdesk, and consulting — to 500+ clients across India.",
   foundingDate: "2014",

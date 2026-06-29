@@ -16,20 +16,20 @@ export const metadata: Metadata = {
   description:
     "Alentro Global Services — trusted IT company in Mumbai since 2014. IT infrastructure, cloud migration (AWS/Azure/GCP), cybersecurity, AMC, helpdesk & IT consulting for SMEs across Mumbai and India. Call +91-7045400592.",
   alternates: {
-    canonical: "https://alentroglobal.com",
+    canonical: "https://alentro-website.vercel.app",
   },
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "ProfessionalService"],
-  "@id": "https://alentroglobal.com/#organization",
+  "@id": "https://alentro-website.vercel.app/#organization",
   name: "Alentro Global Services",
   description:
     "IT company in Mumbai providing end-to-end IT solutions including IT infrastructure, cloud services, cybersecurity, AMC, helpdesk, and IT consulting for businesses across Mumbai and India.",
-  url: "https://alentroglobal.com",
-  logo: "https://alentroglobal.com/logo.png",
-  image: "https://alentroglobal.com/og-image.png",
+  url: "https://alentro-website.vercel.app",
+  logo: "https://alentro-website.vercel.app/logo.png",
+  image: "https://alentro-website.vercel.app/og-image.png",
   telephone: "+91-7045400592",
   email: "info@alentroglobal.com",
   foundingDate: "2014",

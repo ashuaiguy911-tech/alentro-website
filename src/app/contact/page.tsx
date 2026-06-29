@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords:
     "contact IT company Mumbai, IT support Mumbai contact, IT services Mumbai phone, Alentro Global Services contact, IT helpdesk Mumbai",
   alternates: {
-    canonical: "https://alentroglobal.com/contact",
+    canonical: "https://alentro-website.vercel.app/contact",
   },
 };
 
@@ -21,10 +21,10 @@ const contactPageSchema = {
   "@type": "ContactPage",
   name: "Contact Alentro Global Services",
   description: "Contact page for Alentro Global Services IT company in Mumbai",
-  url: "https://alentroglobal.com/contact",
+  url: "https://alentro-website.vercel.app/contact",
   mainEntity: {
     "@type": "Organization",
-    "@id": "https://alentroglobal.com/#organization",
+    "@id": "https://alentro-website.vercel.app/#organization",
     name: "Alentro Global Services",
     telephone: "+91-7045400592",
     email: "info@alentroglobal.com",

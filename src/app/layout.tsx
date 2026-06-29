@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://alentroglobal.com"),
+  metadataBase: new URL("https://alentro-website.vercel.app"),
   title: {
     default: "Alentro Global Services | IT Company Mumbai & India",
     template: "%s | Alentro Global Services",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Alentro Global Services" }],
   creator: "Alentro Global Services",
   alternates: {
-    canonical: "https://alentroglobal.com",
+    canonical: "https://alentro-website.vercel.app",
   },
   verification: {
     google: "z1mXmW6M_NsHpunXDZk5FRyiHx39_7kCgQwjTvAOpx8",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://alentroglobal.com",
+    url: "https://alentro-website.vercel.app",
     siteName: "Alentro Global Services",
     title: "Alentro Global Services | IT Company Mumbai & India",
     description:

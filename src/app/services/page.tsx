@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   keywords:
     "IT services Mumbai, IT infrastructure Mumbai, cloud migration Mumbai, cybersecurity Mumbai, AMC Mumbai, helpdesk services Mumbai, network management Mumbai, IT consulting Mumbai, AWS Azure GCP Mumbai, managed IT services Mumbai",
   alternates: {
-    canonical: "https://alentroglobal.com/services",
+    canonical: "https://alentro-website.vercel.app/services",
   },
 };
 
@@ -23,12 +23,12 @@ const servicesCatalogSchema = {
   name: "IT Services by Alentro Global Services Mumbai",
   description:
     "Complete IT services for businesses in Mumbai and across India",
-  url: "https://alentroglobal.com/services",
+  url: "https://alentro-website.vercel.app/services",
   provider: {
     "@type": "Organization",
     name: "Alentro Global Services",
-    url: "https://alentroglobal.com",
-    "@id": "https://alentroglobal.com/#organization",
+    url: "https://alentro-website.vercel.app",
+    "@id": "https://alentro-website.vercel.app/#organization",
   },
   itemListElement: [
     {
@@ -39,7 +39,7 @@ const servicesCatalogSchema = {
         name: "IT Infrastructure Setup Mumbai",
         description:
           "Complete end-to-end IT infrastructure design and deployment — servers, storage, networking, and workstations tailored for businesses in Mumbai.",
-        provider: { "@id": "https://alentroglobal.com/#organization" },
+        provider: { "@id": "https://alentro-website.vercel.app/#organization" },
         areaServed: "Mumbai, India",
       },
     },
@@ -51,7 +51,7 @@ const servicesCatalogSchema = {
         name: "Annual Maintenance Contracts (AMC) Mumbai",
         description:
           "Comprehensive AMC plans covering hardware, software, and network maintenance for businesses in Mumbai and across India.",
-        provider: { "@id": "https://alentroglobal.com/#organization" },
+        provider: { "@id": "https://alentro-website.vercel.app/#organization" },
         areaServed: "Mumbai, India",
       },
     },
@@ -63,7 +63,7 @@ const servicesCatalogSchema = {
         name: "Helpdesk Services Mumbai",
         description:
           "Multi-tier helpdesk support with rapid ticket resolution, SLA tracking, and seamless escalation paths.",
-        provider: { "@id": "https://alentroglobal.com/#organization" },
+        provider: { "@id": "https://alentro-website.vercel.app/#organization" },
         areaServed: "Mumbai, India",
       },
     },
@@ -75,7 +75,7 @@ const servicesCatalogSchema = {
         name: "Cloud Services Mumbai (AWS, Azure, GCP)",
         description:
           "Cloud migration, architecture design, cost optimisation, and managed cloud operations across AWS, Microsoft Azure, and Google Cloud for Mumbai businesses.",
-        provider: { "@id": "https://alentroglobal.com/#organization" },
+        provider: { "@id": "https://alentro-website.vercel.app/#organization" },
         areaServed: "Mumbai, India",
       },
     },
@@ -87,7 +87,7 @@ const servicesCatalogSchema = {
         name: "Cybersecurity Solutions Mumbai",
         description:
           "Enterprise-grade firewall deployment, vulnerability assessment, intrusion detection, and end-to-end security policy implementation in Mumbai.",
-        provider: { "@id": "https://alentroglobal.com/#organization" },
+        provider: { "@id": "https://alentro-website.vercel.app/#organization" },
         areaServed: "Mumbai, India",
       },
     },
@@ -99,7 +99,7 @@ const servicesCatalogSchema = {
         name: "Network and Server Management Mumbai",
         description:
           "Proactive monitoring, configuration, and optimisation of LAN/WAN infrastructure, routers, switches, and servers.",
-        provider: { "@id": "https://alentroglobal.com/#organization" },
+        provider: { "@id": "https://alentro-website.vercel.app/#organization" },
         areaServed: "Mumbai, India",
       },
     },
@@ -111,7 +111,7 @@ const servicesCatalogSchema = {
         name: "IT Consulting Mumbai",
         description:
           "Strategic IT advisory to align technology investments with business goals, roadmaps, and digital transformation initiatives.",
-        provider: { "@id": "https://alentroglobal.com/#organization" },
+        provider: { "@id": "https://alentro-website.vercel.app/#organization" },
         areaServed: "Mumbai, India",
       },
     },
@@ -123,7 +123,7 @@ const servicesCatalogSchema = {
         name: "Staff Augmentation IT Mumbai",
         description:
           "Flexible IT talent solutions to supplement your team — from short-term project needs to long-term managed staffing across India.",
-        provider: { "@id": "https://alentroglobal.com/#organization" },
+        provider: { "@id": "https://alentro-website.vercel.app/#organization" },
         areaServed: "India",
       },
     },
