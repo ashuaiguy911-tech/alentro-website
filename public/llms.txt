@@ -1,0 +1,49 @@
+# Alentro Global Services
+
+> Trusted IT Solutions Company in Mumbai, India
+> Website: https://alentro-website.vercel.app
+> Founded: 2014 | 500+ clients served | Pan-India operations
+> Phone: +91-7045400592
+> LinkedIn: linkedin.com/company/alentro-global-services
+
+## About
+
+Alentro Global Services is a leading IT company headquartered in Mumbai, Maharashtra, India. Founded in 2014, we deliver end-to-end IT solutions to SMEs and growing businesses across Mumbai and Pan-India. We maintain a 99.9% uptime SLA and serve clients across Manufacturing, Retail, Healthcare, BFSI, Education, Logistics, and Hospitality sectors.
+
+## Services
+
+- IT Infrastructure Setup — servers, storage, networking, workstations, data centre design
+- Annual Maintenance Contracts (AMC) — preventive maintenance, hardware coverage, quarterly health checks
+- In-House IT Support — dedicated on-site IT professionals embedded in client teams
+- Helpdesk Services — 24/7 multi-tier L1/L2/L3 support with defined SLA windows
+- Network and Server Management — LAN/WAN, routers, switches, firewalls, NAS/SAN
+- Firewall and Cybersecurity Solutions — NGFW (Fortinet, Sophos, Cisco), vulnerability assessment, EDR
+- Cloud Services (AWS, Microsoft Azure, Google Cloud Platform) — migration, managed ops, FinOps
+- Staff Augmentation — certified IT professionals on short or long-term contracts
+- IT Consulting — IT strategy, roadmap, vendor selection, digital transformation advisory
+- Cloud Migration — zero-downtime migration to AWS, Azure, or GCP
+- Data Backup and Recovery — backup strategy, DR planning, business continuity
+- IT Audit — infrastructure assessment, compliance checks, risk management
+
+## Key Facts
+
+- Founded: 2014
+- Location: Mumbai, Maharashtra, India
+- Coverage: Pan-India (Mumbai, Pune, Delhi, Bangalore, Chennai, Hyderabad, Kolkata)
+- Clients served: 500+
+- Uptime SLA: 99.9%
+- Support: 24/7 via phone, email, and WhatsApp
+- Critical issue response time: within 1 hour
+
+## Contact
+
+- Phone / WhatsApp: +91-7045400592
+- Address: Mumbai, Maharashtra, India — 400001
+- Website: https://alentro-website.vercel.app/contact
+
+## Sitemap
+
+- Homepage: https://alentro-website.vercel.app/
+- Services: https://alentro-website.vercel.app/services
+- About Us: https://alentro-website.vercel.app/about
+- Contact: https://alentro-website.vercel.app/contact

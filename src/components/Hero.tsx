@@ -117,7 +117,7 @@ export default function Hero() {
             variants={reduced ? {} : fadeUp}
             className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white leading-tight mb-5"
           >
-            Empowering Businesses with{" "}
+            Mumbai&apos;s Trusted IT Company —{" "}
             <span style={{ color: "var(--color-accent-light)" }}>
               Reliable IT &amp; Business Solutions.
             </span>
