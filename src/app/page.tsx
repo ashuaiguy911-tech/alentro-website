@@ -93,6 +93,39 @@ const localBusinessSchema = {
   priceRange: "$$",
   currenciesAccepted: "INR",
   paymentAccepted: "Bank Transfer, UPI, Cheque",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: "3",
+    bestRating: "5",
+    worstRating: "5",
+  },
+  review: [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Rajesh Sharma" },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      reviewBody:
+        "Alentro Global Services transformed our IT infrastructure within weeks. Their 24/7 support team is incredibly responsive, and the uptime we experience now is exceptional. Truly a reliable partner.",
+      publisher: { "@type": "Organization", name: "Tata AutoComp Systems" },
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Priya Nambiar" },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      reviewBody:
+        "We engaged Alentro for our hospital network upgrade and AMC. Their team's expertise in healthcare IT compliance and their rapid helpdesk resolution has made a significant impact on our operations.",
+      publisher: { "@type": "Organization", name: "Malabar Health Group" },
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Amit Verma" },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      reviewBody:
+        "The cloud migration Alentro executed for us on AWS was seamless — zero downtime, on budget, and ahead of schedule. Their IT consulting team understood our business goals, not just the technology.",
+      publisher: { "@type": "Organization", name: "RetailEdge Solutions" },
+    },
+  ],
 };
 
 const faqSchema = {
