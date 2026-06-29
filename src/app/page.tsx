@@ -14,9 +14,10 @@ import ScrollProgressBar from "@/components/ScrollProgressBar";
 export const metadata: Metadata = {
   title: "IT Company Mumbai | IT Solutions & Support | Alentro Global Services",
   description:
-    "Alentro Global Services — trusted IT company in Mumbai since 2014. IT infrastructure, cloud migration (AWS/Azure/GCP), cybersecurity, AMC, helpdesk & IT consulting for SMEs across Mumbai and India. Call +91-7045400592.",
+    "Alentro Global Services — IT company in Mumbai since 2014. IT infrastructure, cloud, cybersecurity, AMC & helpdesk for SMEs. Call +91-7045400592.",
   alternates: {
     canonical: "https://alentro-website.vercel.app",
+    languages: { "en-IN": "https://alentro-website.vercel.app" },
   },
 };
 

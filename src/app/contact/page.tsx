@@ -8,11 +8,12 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 export const metadata: Metadata = {
   title: "Contact IT Company Mumbai | Alentro Global Services",
   description:
-    "Contact Alentro Global Services — IT company in Mumbai. Call +91-7045400592, WhatsApp us, or fill out our enquiry form for IT solutions, AMC, cloud, cybersecurity & support across Mumbai and India.",
+    "Contact Alentro Global Services in Mumbai. Call +91-7045400592 for IT solutions, AMC, cloud, cybersecurity & helpdesk support across India.",
   keywords:
     "contact IT company Mumbai, IT support Mumbai contact, IT services Mumbai phone, Alentro Global Services contact, IT helpdesk Mumbai",
   alternates: {
     canonical: "https://alentro-website.vercel.app/contact",
+    languages: { "en-IN": "https://alentro-website.vercel.app/contact" },
   },
 };
 

@@ -9,11 +9,12 @@ import { Target, Eye, Heart, Award } from "lucide-react";
 export const metadata: Metadata = {
   title: "About Us | IT Company Mumbai Since 2014",
   description:
-    "Learn about Alentro Global Services — an IT company in Mumbai since 2014. Serving 500+ clients across India with IT infrastructure, cloud, cybersecurity, AMC, and helpdesk solutions. Our mission, vision & values.",
+    "Alentro Global Services: IT company in Mumbai since 2014. Serving 500+ clients across India with IT infrastructure, cloud, cybersecurity, AMC & helpdesk.",
   keywords:
     "about Alentro Global Services, IT company Mumbai history, IT solutions company India, Mumbai IT company since 2014, managed IT services Mumbai",
   alternates: {
     canonical: "https://alentro-website.vercel.app/about",
+    languages: { "en-IN": "https://alentro-website.vercel.app/about" },
   },
 };
 

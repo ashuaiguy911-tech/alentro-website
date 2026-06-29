@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Alentro Global Services",
   },
   description:
-    "Alentro Global Services is a leading IT company in Mumbai providing end-to-end IT solutions — IT Infrastructure, AMC, Helpdesk, Cloud Services (AWS, Azure, GCP), Cybersecurity, Network Management, and IT Consulting for businesses across Mumbai and Pan-India.",
+    "Alentro Global Services: trusted IT company in Mumbai since 2014. IT infrastructure, cloud, cybersecurity, AMC & helpdesk for businesses across India.",
   keywords:
     "IT company Mumbai, IT services Mumbai, IT support Mumbai, IT infrastructure Mumbai, AMC Mumbai, helpdesk Mumbai, cloud services Mumbai, cybersecurity Mumbai, IT consulting Mumbai, managed IT services India, IT solutions India, IT outsourcing Mumbai, network management Mumbai, cloud migration Mumbai, data backup Mumbai, IT audit Mumbai, AWS Azure GCP India, SME IT support Mumbai",
   authors: [{ name: "Alentro Global Services" }],
@@ -50,6 +50,8 @@ export const metadata: Metadata = {
     description:
       "End-to-End IT Solutions for businesses in Mumbai & across India.",
     images: ["/og-image.png"],
+    site: "@alentroglobal",
+    creator: "@alentroglobal",
   },
   robots: {
     index: true,
@@ -67,6 +69,9 @@ export const metadata: Metadata = {
     "geo.placename": "Mumbai, Maharashtra, India",
     "geo.position": "19.0760;72.8777",
     ICBM: "19.0760, 72.8777",
+    // Replace with code from https://www.bing.com/webmasters
+    "msvalidate.01": "BING_VERIFICATION_CODE_HERE",
+    "indexnow-key": "11d4d6abab7b4ccabe5fee628da8df94",
   },
 };
 

@@ -12,6 +12,7 @@ const quickLinks = [
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
+  { label: "Sitemap", href: "/sitemap-html" },
 ];
 
 const serviceLinks = [

@@ -9,11 +9,12 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "IT Services Mumbai | Infrastructure, Cloud, Cybersecurity & More",
   description:
-    "Alentro Global Services offers complete IT services in Mumbai: IT Infrastructure Setup, AMC, Helpdesk, Cloud Migration (AWS/Azure/GCP), Cybersecurity, Network Management, and IT Consulting for businesses across Mumbai and India.",
+    "Complete IT services in Mumbai: infrastructure setup, AMC, helpdesk, cloud migration (AWS/Azure/GCP), cybersecurity & IT consulting for businesses across India.",
   keywords:
     "IT services Mumbai, IT infrastructure Mumbai, cloud migration Mumbai, cybersecurity Mumbai, AMC Mumbai, helpdesk services Mumbai, network management Mumbai, IT consulting Mumbai, AWS Azure GCP Mumbai, managed IT services Mumbai",
   alternates: {
     canonical: "https://alentro-website.vercel.app/services",
+    languages: { "en-IN": "https://alentro-website.vercel.app/services" },
   },
 };
 

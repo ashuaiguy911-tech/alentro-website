@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "jest"
+    "test": "jest",
+    "indexnow": "node scripts/submit-indexnow.js"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.10",
