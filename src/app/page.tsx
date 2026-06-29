@@ -101,37 +101,99 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What IT services does Alentro Global Services offer in Mumbai?",
+      name: "What IT services does Alentro Global Services offer?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Alentro Global Services offers a full range of IT services in Mumbai including IT infrastructure setup, Annual Maintenance Contracts (AMC), helpdesk support, cloud migration (AWS, Azure, GCP), cybersecurity solutions, network and server management, IT consulting, and staff augmentation.",
+        text: "Alentro Global Services offers a comprehensive range of IT services including IT Infrastructure Setup, Annual Maintenance Contracts (AMC), In-House IT Support, Helpdesk Services, Network and Server Management, Firewall and Cybersecurity Solutions, Cloud Services (AWS, Azure, GCP), Staff Augmentation, and IT Consulting — all available for businesses in Mumbai and across India.",
       },
     },
     {
       "@type": "Question",
-      name: "Which areas does Alentro Global Services cover?",
+      name: "How much does IT AMC cost in Mumbai?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Alentro Global Services is headquartered in Mumbai and provides IT solutions and support across Pan-India including Mumbai, Pune, Delhi, Bangalore, and other major cities.",
+        text: "IT AMC costs in Mumbai vary based on the number of devices, scope of coverage, and SLA requirements. Alentro Global Services offers customised AMC plans for businesses of all sizes — from SMEs to large enterprises. Contact us at +91-7045400592 for a free assessment and tailored quote.",
       },
     },
     {
       "@type": "Question",
-      name: "How can I contact Alentro Global Services for IT support in Mumbai?",
+      name: "Does Alentro provide 24/7 IT support?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "You can reach Alentro Global Services at +91-7045400592, WhatsApp the same number, or fill out the contact form on their website. Support is available 24/7.",
+        text: "Yes, Alentro Global Services provides 24/7 IT support for businesses in Mumbai and across India. Our helpdesk is available round-the-clock via phone, email, and WhatsApp (+91-7045400592) to keep your IT systems operational at all times.",
       },
     },
     {
       "@type": "Question",
-      name: "Does Alentro Global Services offer cloud migration services?",
+      name: "Which areas in Mumbai does Alentro serve?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, Alentro Global Services provides cloud migration and managed cloud services across AWS, Microsoft Azure, and Google Cloud Platform (GCP) for businesses in Mumbai and across India.",
+        text: "Alentro Global Services serves all areas across Mumbai including South Mumbai, Bandra, Kurla, Andheri, Powai, Navi Mumbai, Thane, and the entire Mumbai Metropolitan Region (MMR). We also provide Pan-India IT services.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the response time for IT support?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alentro Global Services guarantees defined SLA response times based on priority: critical issues within 1 hour, high-priority within 4 hours, and standard issues within 8 business hours. On-site support is typically deployed same business day for clients in Mumbai.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Alentro offer cloud migration services?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, Alentro Global Services provides end-to-end cloud migration services across AWS, Microsoft Azure, and Google Cloud Platform (GCP). Our process covers assessment, architecture design, zero-downtime migration execution, and post-migration managed operations.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What cybersecurity services does Alentro provide?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alentro Global Services provides comprehensive cybersecurity solutions including Next-Generation Firewall deployment and management (Fortinet, Sophos, Cisco), vulnerability assessment and penetration testing, Endpoint Detection and Response (EDR), security policy design, network intrusion detection, and employee security awareness training.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I get a free IT consultation?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can get a free IT consultation from Alentro Global Services by calling +91-7045400592, WhatsApp-ing the same number, or filling out the contact form on our website. Our team typically responds within 4 business hours.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Alentro serve businesses outside Mumbai?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, Alentro Global Services operates Pan-India, serving businesses in Mumbai, Pune, Delhi, Bangalore, Chennai, Hyderabad, Kolkata, and other major Indian cities. We have served 500+ clients across India since 2014.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What industries does Alentro Global Services serve?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alentro Global Services provides IT solutions across multiple industries including Manufacturing, Retail, Healthcare, BFSI (Banking, Financial Services and Insurance), Education, Logistics, Real Estate, Professional Services, and Hospitality — with solutions customised for each sector's compliance and operational needs.",
       },
     },
   ],
+};
+
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://alentro-website.vercel.app/#webpage",
+  url: "https://alentro-website.vercel.app",
+  name: "IT Company Mumbai | IT Solutions & Support | Alentro Global Services",
+  isPartOf: { "@id": "https://alentro-website.vercel.app/#website" },
+  about: { "@id": "https://alentro-website.vercel.app/#organization" },
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["h1", "[aria-label='Hero section'] p"],
+  },
 };
 
 export default function Home() {
@@ -139,11 +201,15 @@ export default function Home() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema).replace(/</g, "\\u003c") }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema).replace(/</g, "\\u003c") }}
       />
       <ScrollProgressBar />
       <Navbar />

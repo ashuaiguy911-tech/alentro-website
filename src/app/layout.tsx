@@ -70,6 +70,28 @@ export const metadata: Metadata = {
   },
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://alentro-website.vercel.app/#website",
+  name: "Alentro Global Services",
+  url: "https://alentro-website.vercel.app",
+  description:
+    "IT company in Mumbai providing IT infrastructure, cloud services, cybersecurity, AMC, helpdesk and IT consulting.",
+  publisher: {
+    "@id": "https://alentro-website.vercel.app/#organization",
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate:
+        "https://alentro-website.vercel.app/?s={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -78,6 +100,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen flex flex-col antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema).replace(/</g, "\\u003c"),
+          }}
+        />
         {children}
         <ChatWidget />
       </body>

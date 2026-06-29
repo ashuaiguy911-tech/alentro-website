@@ -16,6 +16,25 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbContactSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://alentro-website.vercel.app",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Contact Us",
+      item: "https://alentro-website.vercel.app/contact",
+    },
+  ],
+};
+
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
@@ -91,7 +110,11 @@ export default function ContactPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbContactSchema).replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema).replace(/</g, "\\u003c") }}
       />
       <Navbar />
       <main>

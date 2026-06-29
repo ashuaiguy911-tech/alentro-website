@@ -130,6 +130,185 @@ const servicesCatalogSchema = {
   ],
 };
 
+const breadcrumbServicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://alentro-website.vercel.app",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "IT Services",
+      item: "https://alentro-website.vercel.app/services",
+    },
+  ],
+};
+
+const howToSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to migrate your business to the cloud",
+    description:
+      "Step-by-step guide to migrating your IT infrastructure to AWS, Azure, or GCP with Alentro Global Services.",
+    totalTime: "P30D",
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Cloud Readiness Assessment",
+        text: "Our certified cloud architects assess your current infrastructure, applications, and data to determine cloud readiness, map dependencies, and estimate migration costs.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Cloud Strategy and Architecture Design",
+        text: "We design a tailored cloud architecture on AWS, Azure, or GCP — selecting the right services, regions, and cost-optimisation strategies for your business goals.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Pilot Migration",
+        text: "A phased migration plan is created with zero-downtime strategies. Non-critical workloads are migrated first to validate the approach before full cutover.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Full Cloud Migration",
+        text: "We execute the full migration with continuous monitoring, ensuring all applications, data, and services move with no data loss and minimal disruption.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 5,
+        name: "Post-Migration Managed Operations",
+        text: "Alentro provides ongoing cloud management, cost optimisation, security monitoring, and 24/7 support after migration is complete.",
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to set up IT infrastructure for your business",
+    description:
+      "Step-by-step process for designing and deploying complete IT infrastructure for your Mumbai or India-based business.",
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "IT Needs Assessment",
+        text: "We assess your business size, growth plans, compliance needs, and current IT state to produce an infrastructure blueprint.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Infrastructure Design and Procurement",
+        text: "Our engineers design the server, storage, network, and workstation architecture and assist with hardware and software procurement at competitive pricing.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Installation and Configuration",
+        text: "On-site rack-and-stack, cabling, OS deployment, server and network configuration executed by our certified professionals.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Testing and Commissioning",
+        text: "End-to-end testing of all systems, network connectivity, failover scenarios, and performance benchmarking before handover.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 5,
+        name: "Documentation and Ongoing AMC",
+        text: "Complete as-built documentation, user training, and AMC options are provided to keep your infrastructure running long-term.",
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to protect your business from cyber threats",
+    description:
+      "A step-by-step guide to implementing enterprise cybersecurity for your business with Alentro Global Services.",
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Security Audit",
+        text: "We conduct a comprehensive IT security audit covering network vulnerabilities, endpoint gaps, access controls, and regulatory compliance requirements.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Firewall and Perimeter Security",
+        text: "Next-generation firewalls (Fortinet, Sophos, Cisco) are deployed and configured with custom security policies suited to your business.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Endpoint Security",
+        text: "Endpoint Detection and Response (EDR) solutions are deployed across all devices to detect and neutralise threats in real time.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Access Management and Security Policies",
+        text: "Security policies, MFA, role-based access controls, and data protection protocols are established and documented.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 5,
+        name: "Ongoing Monitoring and Training",
+        text: "24/7 security monitoring, regular vulnerability assessments, and employee security awareness training keep defences current.",
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to choose the right IT AMC plan for your business",
+    description:
+      "A practical guide to selecting the best Annual Maintenance Contract for your business IT assets in Mumbai.",
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Inventory Your IT Assets",
+        text: "List all hardware (servers, workstations, printers, network devices) and software assets requiring maintenance coverage.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Define SLA Requirements",
+        text: "Determine acceptable response and resolution times, support hours (business hours vs. 24/7), and on-site vs. remote support needs.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Request a Customised AMC Proposal",
+        text: "Contact Alentro Global Services at +91-7045400592 for a tailored AMC proposal covering your specific assets and SLA requirements.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Review Coverage and Exclusions",
+        text: "Carefully review what is covered (parts, labour, software updates) and any exclusions before signing the AMC agreement.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 5,
+        name: "Onboarding and Asset Documentation",
+        text: "Alentro conducts a baseline IT health check and documents all assets to kick off the scheduled maintenance programme.",
+      },
+    ],
+  },
+];
+
 const serviceDetails: Record<string, { fullDescription: string; benefits: string[] }> = {
   "IT Infrastructure Setup": {
     fullDescription:
@@ -237,8 +416,19 @@ export default function ServicesPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesCatalogSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesCatalogSchema).replace(/</g, "\\u003c") }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbServicesSchema).replace(/</g, "\\u003c") }}
+      />
+      {howToSchemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
+        />
+      ))}
       <Navbar />
       <main>
         {/* Hero */}
