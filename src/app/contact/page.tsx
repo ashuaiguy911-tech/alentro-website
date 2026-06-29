@@ -6,9 +6,57 @@ import ContactForm from "@/components/ContactForm";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Alentro Global Services",
+  title: "Contact IT Company Mumbai | Alentro Global Services",
   description:
-    "Get in touch with Alentro Global Services. Call +91-8268196705, email us, or fill out our enquiry form for IT solutions across India.",
+    "Contact Alentro Global Services — IT company in Mumbai. Call +91-7045400592, WhatsApp us, or fill out our enquiry form for IT solutions, AMC, cloud, cybersecurity & support across Mumbai and India.",
+  keywords:
+    "contact IT company Mumbai, IT support Mumbai contact, IT services Mumbai phone, Alentro Global Services contact, IT helpdesk Mumbai",
+  alternates: {
+    canonical: "https://alentroglobal.com/contact",
+  },
+};
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact Alentro Global Services",
+  description: "Contact page for Alentro Global Services IT company in Mumbai",
+  url: "https://alentroglobal.com/contact",
+  mainEntity: {
+    "@type": "Organization",
+    "@id": "https://alentroglobal.com/#organization",
+    name: "Alentro Global Services",
+    telephone: "+91-7045400592",
+    email: "info@alentroglobal.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Mumbai",
+      addressRegion: "Maharashtra",
+      addressCountry: "IN",
+    },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+91-7045400592",
+        contactType: "customer support",
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi"],
+        hoursAvailable: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          opens: "00:00",
+          closes: "23:59",
+        },
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: "+91-7045400592",
+        contactType: "sales",
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi"],
+      },
+    ],
+  },
 };
 
 const contactInfo = [
@@ -41,6 +89,10 @@ const contactInfo = [
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
+      />
       <Navbar />
       <main>
         {/* Hero */}

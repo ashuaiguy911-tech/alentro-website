@@ -7,9 +7,58 @@ import Link from "next/link";
 import { Target, Eye, Heart, Award } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us | Alentro Global Services",
+  title: "About Us | IT Company Mumbai Since 2014",
   description:
-    "Learn about Alentro Global Services — our story, mission, vision, and the team dedicated to delivering world-class IT solutions across India.",
+    "Learn about Alentro Global Services — an IT company in Mumbai since 2014. Serving 500+ clients across India with IT infrastructure, cloud, cybersecurity, AMC, and helpdesk solutions. Our mission, vision & values.",
+  keywords:
+    "about Alentro Global Services, IT company Mumbai history, IT solutions company India, Mumbai IT company since 2014, managed IT services Mumbai",
+  alternates: {
+    canonical: "https://alentroglobal.com/about",
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://alentroglobal.com/#organization",
+  name: "Alentro Global Services",
+  legalName: "Alentro Global Services",
+  url: "https://alentroglobal.com",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://alentroglobal.com/logo.png",
+    width: 160,
+    height: 60,
+  },
+  image: "https://alentroglobal.com/og-image.png",
+  description:
+    "Alentro Global Services is a trusted IT company in Mumbai, India, founded in 2014. We deliver end-to-end IT solutions — infrastructure, cloud, cybersecurity, AMC, helpdesk, and consulting — to 500+ clients across India.",
+  foundingDate: "2014",
+  numberOfEmployees: {
+    "@type": "QuantitativeValue",
+    minValue: 10,
+    maxValue: 50,
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mumbai",
+    addressRegion: "Maharashtra",
+    addressCountry: "IN",
+  },
+  telephone: "+91-7045400592",
+  sameAs: [
+    "https://www.linkedin.com/company/alentro-global-services",
+  ],
+  knowsAbout: [
+    "IT Infrastructure",
+    "Cloud Computing",
+    "Cybersecurity",
+    "Managed IT Services",
+    "Annual Maintenance Contracts",
+    "IT Helpdesk",
+    "Network Management",
+    "IT Consulting",
+  ],
 };
 
 const values = [
@@ -42,6 +91,10 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <Navbar />
       <main>
         {/* Hero */}

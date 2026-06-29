@@ -101,9 +101,9 @@ export default function Footer() {
             </p>
             <div className="flex gap-3" aria-label="Social media links">
               {[
-                { href: "https://linkedin.com", label: "LinkedIn", Icon: LinkedInIcon },
-                { href: "https://twitter.com", label: "Twitter / X", Icon: TwitterIcon },
-                { href: "https://facebook.com", label: "Facebook", Icon: FacebookIcon },
+                { href: "https://www.linkedin.com/company/alentro-global-services", label: "LinkedIn", Icon: LinkedInIcon },
+                { href: "https://twitter.com/alentroglobal", label: "Twitter / X", Icon: TwitterIcon },
+                { href: "https://facebook.com/alentroglobal", label: "Facebook", Icon: FacebookIcon },
               ].map(({ href, label, Icon }) => (
                 <motion.a
                   key={label}
@@ -206,7 +206,8 @@ export default function Footer() {
                   aria-hidden="true"
                 />
                 <span className="text-white/60 text-sm leading-relaxed">
-                  Pan-India Operations, India
+                  Mumbai, Maharashtra, India<br />
+                  <span className="text-white/40">Pan-India Operations</span>
                 </span>
               </li>
             </ul>

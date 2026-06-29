@@ -7,9 +7,127 @@ import { services } from "@/data/services";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "IT Services | Alentro Global Services",
+  title: "IT Services Mumbai | Infrastructure, Cloud, Cybersecurity & More",
   description:
-    "Explore our full range of IT services: Infrastructure Setup, AMC, Helpdesk, Cloud Services (AWS, Azure, GCP), Cybersecurity, Staff Augmentation and IT Consulting.",
+    "Alentro Global Services offers complete IT services in Mumbai: IT Infrastructure Setup, AMC, Helpdesk, Cloud Migration (AWS/Azure/GCP), Cybersecurity, Network Management, and IT Consulting for businesses across Mumbai and India.",
+  keywords:
+    "IT services Mumbai, IT infrastructure Mumbai, cloud migration Mumbai, cybersecurity Mumbai, AMC Mumbai, helpdesk services Mumbai, network management Mumbai, IT consulting Mumbai, AWS Azure GCP Mumbai, managed IT services Mumbai",
+  alternates: {
+    canonical: "https://alentroglobal.com/services",
+  },
+};
+
+const servicesCatalogSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "IT Services by Alentro Global Services Mumbai",
+  description:
+    "Complete IT services for businesses in Mumbai and across India",
+  url: "https://alentroglobal.com/services",
+  provider: {
+    "@type": "Organization",
+    name: "Alentro Global Services",
+    url: "https://alentroglobal.com",
+    "@id": "https://alentroglobal.com/#organization",
+  },
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      item: {
+        "@type": "Service",
+        name: "IT Infrastructure Setup Mumbai",
+        description:
+          "Complete end-to-end IT infrastructure design and deployment — servers, storage, networking, and workstations tailored for businesses in Mumbai.",
+        provider: { "@id": "https://alentroglobal.com/#organization" },
+        areaServed: "Mumbai, India",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      item: {
+        "@type": "Service",
+        name: "Annual Maintenance Contracts (AMC) Mumbai",
+        description:
+          "Comprehensive AMC plans covering hardware, software, and network maintenance for businesses in Mumbai and across India.",
+        provider: { "@id": "https://alentroglobal.com/#organization" },
+        areaServed: "Mumbai, India",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      item: {
+        "@type": "Service",
+        name: "Helpdesk Services Mumbai",
+        description:
+          "Multi-tier helpdesk support with rapid ticket resolution, SLA tracking, and seamless escalation paths.",
+        provider: { "@id": "https://alentroglobal.com/#organization" },
+        areaServed: "Mumbai, India",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      item: {
+        "@type": "Service",
+        name: "Cloud Services Mumbai (AWS, Azure, GCP)",
+        description:
+          "Cloud migration, architecture design, cost optimisation, and managed cloud operations across AWS, Microsoft Azure, and Google Cloud for Mumbai businesses.",
+        provider: { "@id": "https://alentroglobal.com/#organization" },
+        areaServed: "Mumbai, India",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      item: {
+        "@type": "Service",
+        name: "Cybersecurity Solutions Mumbai",
+        description:
+          "Enterprise-grade firewall deployment, vulnerability assessment, intrusion detection, and end-to-end security policy implementation in Mumbai.",
+        provider: { "@id": "https://alentroglobal.com/#organization" },
+        areaServed: "Mumbai, India",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 6,
+      item: {
+        "@type": "Service",
+        name: "Network and Server Management Mumbai",
+        description:
+          "Proactive monitoring, configuration, and optimisation of LAN/WAN infrastructure, routers, switches, and servers.",
+        provider: { "@id": "https://alentroglobal.com/#organization" },
+        areaServed: "Mumbai, India",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 7,
+      item: {
+        "@type": "Service",
+        name: "IT Consulting Mumbai",
+        description:
+          "Strategic IT advisory to align technology investments with business goals, roadmaps, and digital transformation initiatives.",
+        provider: { "@id": "https://alentroglobal.com/#organization" },
+        areaServed: "Mumbai, India",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 8,
+      item: {
+        "@type": "Service",
+        name: "Staff Augmentation IT Mumbai",
+        description:
+          "Flexible IT talent solutions to supplement your team — from short-term project needs to long-term managed staffing across India.",
+        provider: { "@id": "https://alentroglobal.com/#organization" },
+        areaServed: "India",
+      },
+    },
+  ],
 };
 
 const serviceDetails: Record<string, { fullDescription: string; benefits: string[] }> = {
@@ -117,6 +235,10 @@ const serviceDetails: Record<string, { fullDescription: string; benefits: string
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesCatalogSchema) }}
+      />
       <Navbar />
       <main>
         {/* Hero */}
