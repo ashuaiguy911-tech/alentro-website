@@ -74,7 +74,7 @@ export default function Navbar() {
           </motion.div>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8" role="menubar">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, i) => (
               <motion.div
                 key={link.href}
@@ -84,7 +84,6 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
-                  role="menuitem"
                   className={`text-sm font-medium transition-colors duration-200 hover:text-accent cursor-pointer ${
                     scrolled ? "text-text" : "text-white/90"
                   }`}
@@ -142,15 +141,12 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="md:hidden bg-white border-t border-border shadow-lg"
-            role="menu"
-            aria-label="Mobile navigation"
           >
             <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  role="menuitem"
                   className="text-text font-medium px-3 py-3 rounded-lg hover:bg-bg-alt hover:text-accent transition-colors duration-200 cursor-pointer"
                   onClick={() => setIsOpen(false)}
                 >

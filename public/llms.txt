@@ -1,49 +1,29 @@
 # Alentro Global Services
 
-> Trusted IT Solutions Company in Mumbai, India
-> Website: https://alentro-website.vercel.app
-> Founded: 2014 | 500+ clients served | Pan-India operations
-> Phone: +91-7045400592
-> LinkedIn: linkedin.com/company/alentro-global-services
+> Trusted end-to-end IT solutions company headquartered in Mumbai, India, serving 500+ businesses since 2014.
 
-## About
-
-Alentro Global Services is a leading IT company headquartered in Mumbai, Maharashtra, India. Founded in 2014, we deliver end-to-end IT solutions to SMEs and growing businesses across Mumbai and Pan-India. We maintain a 99.9% uptime SLA and serve clients across Manufacturing, Retail, Healthcare, BFSI, Education, Logistics, and Hospitality sectors.
+Alentro Global Services delivers IT infrastructure, cloud services, cybersecurity, helpdesk support, AMC, network management, and IT consulting to SMEs and enterprises across Mumbai and Pan-India. Founded in 2014, we maintain a 99.9% uptime SLA and offer 24/7 support via phone, email, and WhatsApp at +91-7045400592.
 
 ## Services
 
-- IT Infrastructure Setup — servers, storage, networking, workstations, data centre design
-- Annual Maintenance Contracts (AMC) — preventive maintenance, hardware coverage, quarterly health checks
-- In-House IT Support — dedicated on-site IT professionals embedded in client teams
-- Helpdesk Services — 24/7 multi-tier L1/L2/L3 support with defined SLA windows
-- Network and Server Management — LAN/WAN, routers, switches, firewalls, NAS/SAN
-- Firewall and Cybersecurity Solutions — NGFW (Fortinet, Sophos, Cisco), vulnerability assessment, EDR
-- Cloud Services (AWS, Microsoft Azure, Google Cloud Platform) — migration, managed ops, FinOps
-- Staff Augmentation — certified IT professionals on short or long-term contracts
-- IT Consulting — IT strategy, roadmap, vendor selection, digital transformation advisory
-- Cloud Migration — zero-downtime migration to AWS, Azure, or GCP
-- Data Backup and Recovery — backup strategy, DR planning, business continuity
-- IT Audit — infrastructure assessment, compliance checks, risk management
+- [IT Infrastructure Setup](https://alentro-website.vercel.app/services): Complete server, storage, networking, and workstation design, procurement, and deployment.
+- [Annual Maintenance Contracts (AMC)](https://alentro-website.vercel.app/services): Comprehensive hardware, software, and network maintenance with quarterly health checks.
+- [Helpdesk Services](https://alentro-website.vercel.app/services): 24/7 multi-tier L1/L2/L3 support with defined SLA response and resolution windows.
+- [Cloud Services — AWS, Azure, GCP](https://alentro-website.vercel.app/services): Cloud migration, architecture design, managed operations, and FinOps cost optimisation.
+- [Cybersecurity Solutions](https://alentro-website.vercel.app/services): NGFW deployment (Fortinet, Sophos, Cisco), vulnerability assessment, penetration testing, and EDR.
+- [Network and Server Management](https://alentro-website.vercel.app/services): Proactive LAN/WAN monitoring, configuration management, and performance optimisation.
+- [IT Consulting](https://alentro-website.vercel.app/services): IT strategy, roadmap planning, vendor selection, and digital transformation advisory.
+- [Staff Augmentation](https://alentro-website.vercel.app/services): Certified IT professionals on flexible short-term or long-term contracts across all verticals.
+- [In-House IT Support](https://alentro-website.vercel.app/services): Dedicated on-site IT professionals embedded within your organisation.
+- [Data Backup and Recovery](https://alentro-website.vercel.app/services): Backup strategy, disaster recovery planning, and business continuity solutions.
 
-## Key Facts
+## Company
 
-- Founded: 2014
-- Location: Mumbai, Maharashtra, India
-- Coverage: Pan-India (Mumbai, Pune, Delhi, Bangalore, Chennai, Hyderabad, Kolkata)
-- Clients served: 500+
-- Uptime SLA: 99.9%
-- Support: 24/7 via phone, email, and WhatsApp
-- Critical issue response time: within 1 hour
+- [About Alentro Global Services](https://alentro-website.vercel.app/about): Our story, mission, vision, values, and a decade of IT excellence across India.
+- [Contact Us](https://alentro-website.vercel.app/contact): Call or WhatsApp +91-7045400592, or submit an enquiry. Based in Mumbai, Maharashtra, India — 400001.
 
-## Contact
+## Optional
 
-- Phone / WhatsApp: +91-7045400592
-- Address: Mumbai, Maharashtra, India — 400001
-- Website: https://alentro-website.vercel.app/contact
-
-## Sitemap
-
-- Homepage: https://alentro-website.vercel.app/
-- Services: https://alentro-website.vercel.app/services
-- About Us: https://alentro-website.vercel.app/about
-- Contact: https://alentro-website.vercel.app/contact
+- [XML Sitemap](https://alentro-website.vercel.app/sitemap.xml): Full sitemap for search engine crawlers.
+- [HTML Sitemap](https://alentro-website.vercel.app/sitemap-html): Human-readable sitemap of all pages.
+- [LinkedIn](https://www.linkedin.com/company/alentro-global-services): Company profile, updates, and team.
