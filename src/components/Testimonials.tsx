@@ -53,7 +53,7 @@ const card: Variants = {
 
 function StarRating() {
   return (
-    <div className="flex gap-1" aria-label="5 out of 5 stars">
+    <div className="flex gap-1" role="img" aria-label="5 out of 5 stars">
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
