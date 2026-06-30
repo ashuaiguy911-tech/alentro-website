@@ -130,7 +130,7 @@ export default async function ServicePage({
               {svc.h1}
             </h1>
             <p className="mt-6 text-white/70 text-lg max-w-3xl leading-relaxed">
-              {svc.fullDescription}
+              {svc.shortDescription}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link
@@ -149,7 +149,97 @@ export default async function ServicePage({
           </div>
         </section>
 
-        {/* Benefits */}
+        {/* About this service */}
+        <section className="py-20 bg-white" aria-labelledby="about-heading">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2
+              id="about-heading"
+              className="text-3xl sm:text-4xl font-bold text-primary mb-8"
+            >
+              About This Service
+            </h2>
+            <div className="prose prose-lg max-w-none text-text-muted space-y-5">
+              <p className="leading-relaxed">{svc.fullDescription}</p>
+              {svc.extendedParagraphs.map((para, i) => (
+                <p key={i} className="leading-relaxed">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Who this is for */}
+        <section
+          className="py-14"
+          style={{ background: "var(--color-navy-50)" }}
+          aria-labelledby="who-heading"
+        >
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row items-start gap-6">
+              <div
+                className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold text-white"
+                style={{ background: "var(--color-accent)" }}
+                aria-hidden="true"
+              >
+                ?
+              </div>
+              <div>
+                <h2
+                  id="who-heading"
+                  className="text-xl font-bold text-primary mb-3"
+                >
+                  Who Is This For?
+                </h2>
+                <p className="text-text-muted leading-relaxed max-w-3xl">
+                  {svc.whoItFor}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Our process */}
+        <section
+          className="py-20"
+          style={{ background: "var(--color-bg-alt)" }}
+          aria-labelledby="process-heading"
+        >
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2
+              id="process-heading"
+              className="text-3xl font-bold text-primary mb-10"
+            >
+              Our Process
+            </h2>
+            <ol className="space-y-6">
+              {svc.processSteps.map((step, i) => (
+                <li
+                  key={step.title}
+                  className="flex items-start gap-5 bg-white rounded-xl p-6 border border-border"
+                >
+                  <div
+                    className="shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white mt-0.5"
+                    style={{ background: "var(--color-accent)" }}
+                    aria-hidden="true"
+                  >
+                    {i + 1}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-primary mb-1">
+                      {step.title}
+                    </h3>
+                    <p className="text-text-muted text-sm leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* What's included */}
         <section className="py-20 bg-white" aria-labelledby="benefits-heading">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2
