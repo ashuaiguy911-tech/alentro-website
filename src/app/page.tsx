@@ -10,6 +10,7 @@ import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "IT Company Mumbai | IT Solutions & Support | Alentro Global Services",
@@ -254,6 +255,7 @@ export default function Home() {
         <WhyUs />
         <Industries />
         <Testimonials />
+        <FAQ />
         <CTABanner />
       </main>
       <Footer />
