@@ -13,7 +13,7 @@ import ScrollProgressBar from "@/components/ScrollProgressBar";
 import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
-  title: "IT Company Mumbai | IT Solutions & Support | Alentro Global Services",
+  title: "Mumbai's Trusted IT Company | Alentro Global Services",
   description:
     "Alentro Global Services — IT company in Mumbai since 2014. IT infrastructure, cloud, cybersecurity, AMC & helpdesk for SMEs. Call +91-7045400592.",
   alternates: {
