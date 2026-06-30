@@ -115,8 +115,6 @@ export default function FAQ() {
 
                 <div
                   id={`faq-answer-${i}`}
-                  role="region"
-                  aria-labelledby={`faq-question-${i}`}
                   hidden={!isOpen}
                 >
                   <p className="px-6 pb-5 text-text-muted leading-relaxed border-t border-border pt-4">

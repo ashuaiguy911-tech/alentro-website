@@ -119,7 +119,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className={`md:hidden p-2 rounded-lg transition-colors duration-200 cursor-pointer ${
+            className={`md:hidden p-3 rounded-lg transition-colors duration-200 cursor-pointer ${
               scrolled
                 ? "text-primary hover:bg-navy-50"
                 : "text-white hover:bg-white/10"

@@ -111,7 +111,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-white/70 transition-colors duration-200 cursor-pointer"
+                  className="w-11 h-11 rounded-lg bg-white/10 flex items-center justify-center text-white/70 transition-colors duration-200 cursor-pointer"
                   aria-label={label}
                   whileHover={
                     reduced
