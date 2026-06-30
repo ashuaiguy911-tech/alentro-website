@@ -60,12 +60,12 @@ describe("Footer", () => {
   it("renders the email link", () => {
     render(<Footer />);
     const emailLink = screen.getByRole("link", {
-      name: /jennifersenekar123@gmail\.com/i,
+      name: /alentroglobalservices@gmail\.com/i,
     });
     expect(emailLink).toBeInTheDocument();
     expect(emailLink).toHaveAttribute(
       "href",
-      "mailto:jennifersenekar123@gmail.com"
+      "mailto:alentroglobalservices@gmail.com"
     );
   });
 

@@ -193,10 +193,10 @@ export default function Footer() {
                   aria-hidden="true"
                 />
                 <a
-                  href="mailto:jennifersenekar123@gmail.com"
+                  href="mailto:alentroglobalservices@gmail.com"
                   className="text-white/60 hover:text-white text-sm transition-colors duration-200 cursor-pointer break-all"
                 >
-                  jennifersenekar123@gmail.com
+                  alentroglobalservices@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
