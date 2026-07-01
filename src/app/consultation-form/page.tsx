@@ -63,7 +63,7 @@ export default function ConsultationFormPage() {
     }
   }
 
-  async function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const validationErrors = validate(form);
     if (Object.keys(validationErrors).length > 0) {
@@ -95,6 +95,16 @@ export default function ConsultationFormPage() {
       });
       const data = await res.json();
       if (data.success) {
+        // Fire-and-forget WhatsApp notification via Railway bot (non-blocking)
+        fetch("https://worker-production-eb1d.up.railway.app/form-submission", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            phone:   form.phone,
+            name:    form.fullName,
+            message: `Thank you ${form.fullName}! We have received your consultation form. Our team will reach out to you one hour before your call.`,
+          }),
+        }).catch(() => {});
         setSubmitted(true);
       } else {
         setSubmitError("Submission failed. Please try again or WhatsApp us directly.");
