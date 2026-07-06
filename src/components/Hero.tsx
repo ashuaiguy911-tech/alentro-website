@@ -117,9 +117,9 @@ export default function Hero() {
             variants={reduced ? {} : fadeUp}
             className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white leading-tight mb-5"
           >
-            Mumbai&apos;s Trusted IT Company —{" "}
+            Sales Ops. Support Ops. IT Talent.{" "}
             <span style={{ color: "var(--color-accent-light)" }}>
-              Reliable IT &amp; Business Solutions.
+              One Vendor.
             </span>
           </motion.h1>
 
@@ -129,7 +129,7 @@ export default function Hero() {
             className="text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-medium"
             style={{ color: "rgba(56,189,248,0.8)" }}
           >
-            Reliable. Scalable. Secure. Your IT. Our Responsibility.
+            One contract for sales seats, support desks, and IT talent — instead of managing three separate vendors, three onboarding timelines, and three points of failure.
           </motion.p>
 
           {/* CTA buttons */}

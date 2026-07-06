@@ -111,8 +111,7 @@ export default function CTABanner() {
             </span>
           </h2>
           <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-            Join 500+ Indian businesses that trust Alentro Global Services for
-            reliable, scalable, and cost-effective IT solutions.
+            Work with Alentro Global Services for outsourced operations, IT talent, and managed IT services — one contract, one SLA, one point of accountability.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <MagneticLink

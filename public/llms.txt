@@ -1,8 +1,8 @@
 # Alentro Global Services
 
-> Trusted end-to-end IT solutions company headquartered in Mumbai, India, serving 500+ businesses since 2014.
+> Founded 2024, Alentro Global Services combines outsourced sales & support operations, IT staff augmentation, and managed IT services for businesses across fintech, education, and civic outreach sectors.
 
-Alentro Global Services delivers IT infrastructure, cloud services, cybersecurity, helpdesk support, AMC, network management, and IT consulting to SMEs and enterprises across Mumbai and Pan-India. Founded in 2014, we maintain a 99.9% uptime SLA and offer 24/7 support via phone, email, and WhatsApp at +91-7045400592.
+Alentro Global Services delivers outsourced operations (sales seats, support desks), IT staff augmentation, and managed IT services to businesses across Mumbai and Pan-India. Founded in 2024 by founders with deep expertise in IT operations, sales, and business consulting, we operate with 4 active client engagements. We maintain a 99.9% uptime SLA and offer 24/7 support via phone, email, and WhatsApp at +91-7045400592.
 
 ## Services
 
@@ -19,7 +19,7 @@ Alentro Global Services delivers IT infrastructure, cloud services, cybersecurit
 
 ## Company
 
-- [About Alentro Global Services](https://alentro-website.vercel.app/about): Our story, mission, vision, values, and a decade of IT excellence across India.
+- [About Alentro Global Services](https://alentro-website.vercel.app/about): Our story, mission, vision, and values.
 - [Contact Us](https://alentro-website.vercel.app/contact): Call or WhatsApp +91-7045400592, or submit an enquiry. Based in Mumbai, Maharashtra, India — 400001.
 
 ## Optional

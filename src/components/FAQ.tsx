@@ -47,7 +47,7 @@ const faqs = [
   {
     question: "Does Alentro serve businesses outside Mumbai?",
     answer:
-      "Yes, Alentro Global Services operates Pan-India, serving businesses in Mumbai, Pune, Delhi, Bangalore, Chennai, Hyderabad, Kolkata, and other major Indian cities. We have served 500+ clients across India since 2014.",
+      "Yes, Alentro Global Services operates Pan-India. We currently have 4 active client engagements across fintech, education, and civic outreach sectors.",
   },
   {
     question: "What industries does Alentro Global Services serve?",

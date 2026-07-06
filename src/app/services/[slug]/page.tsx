@@ -281,8 +281,8 @@ export default async function ServicePage({
             </h2>
             <div className="grid sm:grid-cols-3 gap-6">
               {[
-                { stat: "2014", label: "Founded — 10+ years of IT expertise" },
-                { stat: "500+", label: "Clients served across Mumbai & India" },
+                { stat: "2024", label: "Founded with founder expertise in IT operations & sales" },
+                { stat: "4", label: "Active client engagements" },
                 { stat: "99.9%", label: "Uptime SLA commitment" },
               ].map((item) => (
                 <div

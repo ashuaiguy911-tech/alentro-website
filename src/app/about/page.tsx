@@ -7,11 +7,11 @@ import Link from "next/link";
 import { Target, Eye, Heart, Award } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us | IT Company Mumbai Since 2014",
+  title: "About Us | IT Company Mumbai Founded 2024",
   description:
-    "Alentro Global Services: IT company in Mumbai since 2014. Serving 500+ clients across India with IT infrastructure, cloud, cybersecurity, AMC & helpdesk.",
+    "Alentro Global Services: Founded 2024. Outsourced sales & support operations, IT staff augmentation, and managed IT services across fintech, education, and civic outreach.",
   keywords:
-    "about Alentro Global Services, IT company Mumbai history, IT solutions company India, Mumbai IT company since 2014, managed IT services Mumbai",
+    "about Alentro Global Services, IT company Mumbai founded 2024, IT solutions company India, managed IT services Mumbai, outsourced operations",
   alternates: {
     canonical: "https://alentro-website.vercel.app/about",
     languages: { "en-IN": "https://alentro-website.vercel.app/about" },
@@ -33,12 +33,12 @@ const organizationSchema = {
   },
   image: "https://alentro-website.vercel.app/og-image.png",
   description:
-    "Alentro Global Services is a trusted IT company in Mumbai, India, founded in 2014. We deliver end-to-end IT solutions — infrastructure, cloud, cybersecurity, AMC, helpdesk, and consulting — to 500+ clients across India.",
-  foundingDate: "2014",
+    "Alentro Global Services: Founded 2024. We combine outsourced sales & support operations with IT staff augmentation and managed services. 4 active client engagements across fintech, education, and civic outreach.",
+  foundingDate: "2024",
   numberOfEmployees: {
     "@type": "QuantitativeValue",
-    minValue: 10,
-    maxValue: 50,
+    minValue: 2,
+    maxValue: 2,
   },
   address: {
     "@type": "PostalAddress",
@@ -151,10 +151,10 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="mt-6 text-white/70 text-lg max-w-3xl mx-auto leading-relaxed">
-              Since 2014, Alentro Global Services has been a trusted technology
-              partner for businesses across India — from startups to enterprises.
-              We deliver end-to-end IT services that are reliable, scalable, and
-              built for growth.
+              Founded in 2024, Alentro Global Services solves a critical problem:
+              businesses need one vendor for sales operations, support operations,
+              and IT talent — not three separate vendors, three onboarding timelines,
+              and three points of failure.
             </p>
           </div>
         </section>
@@ -171,24 +171,27 @@ export default function AboutPage() {
                   id="story-heading"
                   className="mt-3 text-3xl sm:text-4xl font-bold text-primary leading-tight"
                 >
-                  A Decade of IT Excellence in India
+                  Two Years In, Built to Scale
                 </h2>
                 <p className="mt-5 text-text-muted leading-relaxed">
-                  Alentro Global Services was founded with a simple but powerful
-                  belief: every Indian business, regardless of size, deserves
-                  access to world-class IT support and infrastructure.
+                  Alentro Global Services was founded in 2024 by founders with deep
+                  expertise in the spaces we operate: Jennifer brings expertise in
+                  IT/tech operations, staff augmentation, and client acquisition;
+                  Ashutosh brings expertise in business consulting, high-ticket
+                  sales, team building, systems design, and automation.
                 </p>
                 <p className="mt-4 text-text-muted leading-relaxed">
-                  Starting as a lean team of certified IT professionals, we grew
-                  by focusing relentlessly on client outcomes. Today, we serve
-                  500+ clients across India with a comprehensive suite of IT
-                  services — from infrastructure setup to cloud migrations and
-                  cybersecurity.
+                  We&apos;re executing on 4 active client engagements across fintech,
+                  education, and civic outreach sectors. These are signed, committed
+                  relationships—currently in pre-revenue phase as we await funding
+                  confirmation to scale operations. We&apos;re moving lean and fast,
+                  proving the model before we grow.
                 </p>
                 <p className="mt-4 text-text-muted leading-relaxed">
-                  Our growth has been built on long-term relationships, high
-                  SLA adherence, and a team that genuinely cares about keeping
-                  your business running at its best.
+                  Our competitive advantage is simple: we run both sales/support
+                  operations and IT services under one roof. Most competitors choose
+                  one or the other. We do both, which means one contract, one SLA,
+                  one point of accountability.
                 </p>
                 <div className="mt-8">
                   <Link
@@ -202,10 +205,10 @@ export default function AboutPage() {
 
               <div className="grid grid-cols-2 gap-5">
                 {[
-                  { val: "2014", label: "Founded" },
-                  { val: "500+", label: "Clients Served" },
+                  { val: "2024", label: "Founded" },
+                  { val: "4", label: "Active Client Engagements" },
                   { val: "Pan-India", label: "Coverage" },
-                  { val: "99.9%", label: "Uptime SLA" },
+                  { val: "99.9%", label: "Target SLA" },
                 ].map((item) => (
                   <div
                     key={item.label}

@@ -3,8 +3,8 @@
 ## Company Overview
 
 **Company:** Alentro Global Services  
-**Type:** B2B Managed IT Services Provider  
-**Founded:** 2014  
+**Type:** B2B Outsourced Operations & Managed IT Services Provider  
+**Founded:** 2024  
 **HQ:** Mumbai, Maharashtra, India  
 **Coverage:** Pan-India (Mumbai, Pune, Delhi, Bangalore, Chennai, Hyderabad, Kolkata)  
 **Website:** https://alentro-website.vercel.app  
@@ -29,12 +29,13 @@
 > "Alentro Global Services is Mumbai's trusted IT partner — delivering the enterprise-grade IT infrastructure, cloud, and security solutions of a large IT firm, at SME-friendly pricing, with a local team that responds within hours, not days."
 
 **Key differentiators:**
-- Founded 2014 — 10+ years of proven IT delivery in India
-- 500+ clients served across Mumbai and India
+- Founded 2024 by founders with deep expertise in IT operations, sales, and business consulting
+- 4 active client engagements across fintech, education, and civic outreach sectors
 - 99.9% uptime SLA commitment — backed by defined response times
 - 24/7 helpdesk available via phone, email, and WhatsApp
 - Critical issue response: within 1 hour
 - Local Mumbai presence — on-site support same business day
+- One vendor for sales ops, support ops, and IT talent — eliminating vendor coordination overhead
 
 ## Services (with target keywords)
 
@@ -82,5 +83,5 @@
 
 - **Professional but approachable** — Not overly technical, accessible to non-IT buyers
 - **Local and specific** — Always mention Mumbai, reference Indian business context
-- **Evidence-based** — Use specific numbers (500+ clients, 2014, 99.9% SLA, 1-hour response)
+- **Evidence-based** — Use specific numbers (4 active engagements, 2024 founding, 99.9% SLA, 1-hour response)
 - **Action-oriented** — End every page/section with a clear CTA (call, WhatsApp, contact form)

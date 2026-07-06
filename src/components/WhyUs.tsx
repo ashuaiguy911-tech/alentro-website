@@ -78,19 +78,17 @@ export default function WhyUs() {
               </span>
             </h2>
             <p className="mt-5 text-text-muted text-lg leading-relaxed">
-              With over a decade of experience serving Indian businesses, we
-              understand the unique challenges you face. Our solutions are built
-              for reliability, scalability, and long-term success.
+              Our founders bring deep expertise in IT operations, sales, and staff augmentation. We're built lean and focused on proving this model works before scaling.
             </p>
             <div className="mt-8 flex items-center gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary">500+</div>
-                <div className="text-sm text-text-muted">Happy Clients</div>
+                <div className="text-3xl font-bold text-primary">4</div>
+                <div className="text-sm text-text-muted">Active Clients</div>
               </div>
               <div className="w-px h-12 bg-border" />
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary">10+</div>
-                <div className="text-sm text-text-muted">Years in IT</div>
+                <div className="text-3xl font-bold text-primary">2024</div>
+                <div className="text-sm text-text-muted">Founded</div>
               </div>
               <div className="w-px h-12 bg-border" />
               <div className="text-center">

@@ -211,7 +211,7 @@ export default function ChoosingITPartnerPage() {
                 The consequences compound over time: IT downtime that disrupts operations, security incidents that could have been prevented, cloud costs that spiral without governance, and the operational distraction of managing a vendor relationship that is not delivering. For a business of 50–500 employees, the total cost of a poor IT partnership — including downtime losses, incident recovery, and transition costs when you eventually switch — can easily run into tens of lakhs.
               </p>
               <p className="leading-relaxed">
-                The good news is that the differences between a strong IT partner and a poor one are identifiable before you sign a contract. This guide gives you the seven criteria to evaluate, the specific questions to ask, and the red flags to watch for — based on 10 years of delivering IT services to Mumbai businesses across BFSI, healthcare, manufacturing, and professional services.
+                The good news is that the differences between a strong IT partner and a poor one are identifiable before you sign a contract. This guide gives you the seven criteria to evaluate, the specific questions to ask, and the red flags to watch for — built on best practices for IT vendor evaluation and structured sourcing frameworks used across the industry.
               </p>
             </div>
           </div>
@@ -380,7 +380,7 @@ export default function ChoosingITPartnerPage() {
                 {
                   criterion: "Local Mumbai Presence",
                   answer:
-                    "Mumbai-based team since 2014. Same-day on-site support across Greater Mumbai and Navi Mumbai. On-site included in AMC and managed service contracts.",
+                    "Founded 2024, based in Mumbai. Same-day on-site support across Greater Mumbai and Navi Mumbai. On-site included in AMC and managed service contracts.",
                 },
                 {
                   criterion: "Service Breadth",
@@ -390,7 +390,7 @@ export default function ChoosingITPartnerPage() {
                 {
                   criterion: "Track Record",
                   answer:
-                    "500+ clients served across Mumbai since 2014. We provide verifiable references on request from clients in your industry and company size range.",
+                    "4 active client engagements across fintech, education, and civic outreach. We provide verifiable references on request — these are real, signed relationships.",
                 },
                 {
                   criterion: "Escalation Structure",

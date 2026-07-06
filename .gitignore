@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# build cache
+.swc/
+
+# test reports
+lighthouse-a11y.json

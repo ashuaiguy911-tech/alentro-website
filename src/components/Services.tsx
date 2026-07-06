@@ -95,18 +95,17 @@ export default function Services() {
             className="font-semibold text-sm uppercase tracking-widest"
             style={{ color: "var(--color-accent)" }}
           >
-            What We Do
+            What We Offer
           </span>
           <h2
             id="services-heading"
             className="mt-3 text-3xl sm:text-4xl font-bold"
             style={{ color: "var(--color-primary)" }}
           >
-            Our IT Services
+            Operations, IT Talent & Managed Services
           </h2>
           <p className="mt-4 text-text-muted text-lg max-w-2xl mx-auto">
-            Comprehensive technology solutions designed to meet every IT need
-            your business has — from infrastructure to the cloud.
+            Everything you need to run sales, support, and IT operations — from staffed desks to managed infrastructure, all coordinated under one vendor.
           </p>
         </motion.div>
 

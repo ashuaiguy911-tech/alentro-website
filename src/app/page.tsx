@@ -5,7 +5,7 @@ import Stats from "@/components/Stats";
 import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
 import Industries from "@/components/Industries";
-import Testimonials from "@/components/Testimonials";
+// import Testimonials from "@/components/Testimonials"; // Removed until real testimonials available
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -15,7 +15,7 @@ import FAQ from "@/components/FAQ";
 export const metadata: Metadata = {
   title: "Mumbai's Trusted IT Company | Alentro Global Services",
   description:
-    "Alentro Global Services — IT company in Mumbai since 2014. IT infrastructure, cloud, cybersecurity, AMC & helpdesk for SMEs. Call +91-7045400592.",
+    "Alentro Global Services — Founded 2024. Outsourced sales & support operations, IT staff augmentation, and managed IT services. Pan-India operations. Call +91-7045400592.",
   alternates: {
     canonical: "https://alentro-website.vercel.app",
     languages: { "en-IN": "https://alentro-website.vercel.app" },
@@ -34,7 +34,7 @@ const localBusinessSchema = {
   image: "https://alentro-website.vercel.app/og-image.png",
   telephone: "+91-7045400592",
   email: "info@alentroglobal.com",
-  foundingDate: "2014",
+  foundingDate: "2024",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Mumbai",
@@ -203,7 +203,7 @@ const faqSchema = {
       name: "Does Alentro serve businesses outside Mumbai?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, Alentro Global Services operates Pan-India, serving businesses in Mumbai, Pune, Delhi, Bangalore, Chennai, Hyderabad, Kolkata, and other major Indian cities. We have served 500+ clients across India since 2014.",
+        text: "Yes, Alentro Global Services operates Pan-India, serving businesses across multiple sectors. We currently have 4 active client engagements across fintech, education, and civic outreach sectors.",
       },
     },
     {
@@ -254,7 +254,7 @@ export default function Home() {
         <Services />
         <WhyUs />
         <Industries />
-        <Testimonials />
+        {/* <Testimonials /> Removed until real testimonials available */}
         <FAQ />
         <CTABanner />
       </main>

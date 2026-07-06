@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Alentro Global Services",
   },
   description:
-    "Alentro Global Services: trusted IT company in Mumbai since 2014. IT infrastructure, cloud, cybersecurity, AMC & helpdesk for businesses across India.",
+    "Alentro Global Services: Founded 2024. Outsourced sales & support operations, IT staff augmentation, and managed IT services. Pan-India operations.",
   keywords:
     "IT company Mumbai, IT services Mumbai, IT support Mumbai, IT infrastructure Mumbai, AMC Mumbai, helpdesk Mumbai, cloud services Mumbai, cybersecurity Mumbai, IT consulting Mumbai, managed IT services India, IT solutions India, IT outsourcing Mumbai, network management Mumbai, cloud migration Mumbai, data backup Mumbai, IT audit Mumbai, AWS Azure GCP India, SME IT support Mumbai",
   authors: [{ name: "Alentro Global Services" }],

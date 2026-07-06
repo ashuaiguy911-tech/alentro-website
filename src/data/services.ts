@@ -1,9 +1,8 @@
 import {
-  Server,
+  Briefcase,
   ClipboardList,
   Users,
   Headphones,
-  Network,
   Shield,
   Cloud,
   UserPlus,
@@ -19,57 +18,39 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    icon: Server,
-    name: "IT Infrastructure Setup",
+    icon: Briefcase,
+    name: "Managed Outsourced Operations",
     description:
-      "Complete end-to-end infrastructure design and deployment — servers, storage, networking, and workstations tailored to your business scale.",
-  },
-  {
-    icon: ClipboardList,
-    name: "Annual Maintenance Contracts (AMC)",
-    description:
-      "Comprehensive AMC plans covering hardware, software, and network maintenance to keep your IT assets running at peak performance.",
-  },
-  {
-    icon: Users,
-    name: "In-House IT Support",
-    description:
-      "Dedicated on-site IT professionals embedded within your organisation to provide immediate, expert technical assistance.",
-  },
-  {
-    icon: Headphones,
-    name: "Helpdesk Services",
-    description:
-      "Multi-tier helpdesk support with rapid ticket resolution, SLA tracking, and seamless escalation paths for your team.",
-  },
-  {
-    icon: Network,
-    name: "Network and Server Management",
-    description:
-      "Proactive monitoring, configuration, and optimisation of your LAN/WAN infrastructure, routers, switches, and servers.",
-  },
-  {
-    icon: Shield,
-    name: "Firewall and Cybersecurity Solutions",
-    description:
-      "Enterprise-grade firewall deployment, vulnerability assessment, intrusion detection, and end-to-end security policy implementation.",
-  },
-  {
-    icon: Cloud,
-    name: "Cloud Services (AWS, Azure, GCP)",
-    description:
-      "Cloud migration, architecture design, cost optimisation, and managed cloud operations across AWS, Microsoft Azure, and Google Cloud.",
+      "Run your sales and customer support operations without the overhead. We staff, manage, and scale outbound sales seats, inbound support desks, and dedicated IT talent—all under one contract, one SLA, one point of accountability.",
   },
   {
     icon: UserPlus,
     name: "Staff Augmentation",
     description:
-      "Flexible IT talent solutions to supplement your team — from short-term project needs to long-term managed staffing.",
+      "Flexible, skilled IT professionals embedded with your team. Scale your workforce for projects or ongoing support without the hiring overhead or long-term fixed costs.",
+  },
+  {
+    icon: Headphones,
+    name: "Managed Helpdesk & IT Support",
+    description:
+      "24/7 multi-tier helpdesk and on-site IT support with rapid ticket resolution, proactive monitoring, SLA tracking, and seamless escalation for your organization.",
+  },
+  {
+    icon: ClipboardList,
+    name: "Annual Maintenance Contracts (AMC)",
+    description:
+      "Comprehensive AMC plans covering hardware, software, network maintenance, and infrastructure monitoring to keep your IT assets running at peak performance.",
+  },
+  {
+    icon: Cloud,
+    name: "Cybersecurity & Cloud",
+    description:
+      "Cloud migration, architecture, and managed operations (AWS, Azure, GCP) plus enterprise-grade security solutions. Delivered via our certified specialist partner network to ensure best-in-class expertise.",
   },
   {
     icon: Lightbulb,
     name: "IT Consulting",
     description:
-      "Strategic IT advisory to align technology investments with your business goals, roadmaps, and digital transformation initiatives.",
+      "Strategic IT advisory aligned with your business goals. Roadmaps, digital transformation strategy, and technology decisions that reduce cost and increase competitive advantage.",
   },
 ];

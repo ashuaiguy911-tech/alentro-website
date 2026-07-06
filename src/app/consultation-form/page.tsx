@@ -351,7 +351,7 @@ export default function ConsultationFormPage() {
         {/* Trust strip */}
         <div className="mt-8 grid grid-cols-3 gap-4 text-center">
           {[
-            { icon: Clock,   value: "Since 2014",  label: "IT Expertise"       },
+            { icon: Clock,   value: "Founded 2024",  label: "Rapid Execution"       },
             { icon: Phone,   value: "24/7",        label: "Support Available"  },
             { icon: Mail,    value: "Pan-India",   label: "Operations"         },
           ].map(({ icon: Icon, value, label }) => (

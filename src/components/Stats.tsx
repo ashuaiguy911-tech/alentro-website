@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { Users, MapPin, Briefcase, Calendar } from "lucide-react";
 
 const trustItems = [
-  { icon: Users, value: "2–10", label: "Employees" },
+  { icon: Users, value: "2", label: "Founders" },
   { icon: MapPin, value: "Pan-India", label: "Coverage" },
   { icon: Briefcase, value: "IT Services", label: "& IT Consulting" },
   { icon: Calendar, value: "2024", label: "Founded" },

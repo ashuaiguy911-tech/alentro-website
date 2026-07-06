@@ -18,7 +18,7 @@ const pages = [
     title: "Home",
     href: "/",
     description:
-      "IT company in Mumbai offering end-to-end IT solutions since 2014.",
+      "Alentro Global Services: Founded 2024. Outsourced sales & support operations, IT staff augmentation, and managed IT services.",
   },
   {
     title: "IT Services",
@@ -30,7 +30,7 @@ const pages = [
     title: "About Us",
     href: "/about",
     description:
-      "Our story, mission, vision, values, and 10+ years serving 500+ clients across India.",
+      "Our story, mission, vision, and values. Founded 2024, executing on 4 active client engagements.",
   },
   {
     title: "Contact Us",
