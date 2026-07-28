@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Complete sitemap for Alentro Global Services — IT company in Mumbai. Browse all pages including services, about us, and contact information.",
   alternates: {
-    canonical: "https://alentro-website.vercel.app/sitemap-html",
+    canonical: "https://alentroglobalservices.com/sitemap-html",
   },
   robots: { index: true, follow: true },
 };
@@ -75,7 +75,7 @@ export default function HtmlSitemapPage() {
                     {page.description}
                   </p>
                   <p className="mt-2 text-xs text-text-muted/60 font-mono">
-                    https://alentro-website.vercel.app{page.href === "/" ? "" : page.href}
+                    https://alentroglobalservices.com{page.href === "/" ? "" : page.href}
                   </p>
                 </li>
               ))}

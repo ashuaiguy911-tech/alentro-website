@@ -17,21 +17,21 @@ export const metadata: Metadata = {
   description:
     "Alentro Global Services — Founded 2024. Outsourced sales & support operations, IT staff augmentation, and managed IT services. Pan-India operations. Call +91-7045400592.",
   alternates: {
-    canonical: "https://alentro-website.vercel.app",
-    languages: { "en-IN": "https://alentro-website.vercel.app" },
+    canonical: "https://alentroglobalservices.com",
+    languages: { "en-IN": "https://alentroglobalservices.com" },
   },
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "ProfessionalService"],
-  "@id": "https://alentro-website.vercel.app/#organization",
+  "@id": "https://alentroglobalservices.com/#organization",
   name: "Alentro Global Services",
   description:
     "IT company in Mumbai providing end-to-end IT solutions including IT infrastructure, cloud services, cybersecurity, AMC, helpdesk, and IT consulting for businesses across Mumbai and India.",
-  url: "https://alentro-website.vercel.app",
-  logo: "https://alentro-website.vercel.app/logo.png",
-  image: "https://alentro-website.vercel.app/og-image.png",
+  url: "https://alentroglobalservices.com",
+  logo: "https://alentroglobalservices.com/logo.png",
+  image: "https://alentroglobalservices.com/og-image.png",
   telephone: "+91-7045400592",
   email: "info@alentroglobal.com",
   foundingDate: "2024",
@@ -220,11 +220,11 @@ const faqSchema = {
 const speakableSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://alentro-website.vercel.app/#webpage",
-  url: "https://alentro-website.vercel.app",
+  "@id": "https://alentroglobalservices.com/#webpage",
+  url: "https://alentroglobalservices.com",
   name: "IT Company Mumbai | IT Solutions & Support | Alentro Global Services",
-  isPartOf: { "@id": "https://alentro-website.vercel.app/#website" },
-  about: { "@id": "https://alentro-website.vercel.app/#organization" },
+  isPartOf: { "@id": "https://alentroglobalservices.com/#website" },
+  about: { "@id": "https://alentroglobalservices.com/#organization" },
   speakable: {
     "@type": "SpeakableSpecification",
     cssSelector: ["h1", "[aria-label='Hero section'] p"],

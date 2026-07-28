@@ -13,25 +13,25 @@ export const metadata: Metadata = {
   keywords:
     "about Alentro Global Services, IT company Mumbai founded 2024, IT solutions company India, managed IT services Mumbai, outsourced operations",
   alternates: {
-    canonical: "https://alentro-website.vercel.app/about",
-    languages: { "en-IN": "https://alentro-website.vercel.app/about" },
+    canonical: "https://alentroglobalservices.com/about",
+    languages: { "en-IN": "https://alentroglobalservices.com/about" },
   },
 };
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://alentro-website.vercel.app/#organization",
+  "@id": "https://alentroglobalservices.com/#organization",
   name: "Alentro Global Services",
   legalName: "Alentro Global Services",
-  url: "https://alentro-website.vercel.app",
+  url: "https://alentroglobalservices.com",
   logo: {
     "@type": "ImageObject",
-    url: "https://alentro-website.vercel.app/logo.png",
+    url: "https://alentroglobalservices.com/logo.png",
     width: 160,
     height: 60,
   },
-  image: "https://alentro-website.vercel.app/og-image.png",
+  image: "https://alentroglobalservices.com/og-image.png",
   description:
     "Alentro Global Services: Founded 2024. We combine outsourced sales & support operations with IT staff augmentation and managed services. 4 active client engagements across fintech, education, and civic outreach.",
   foundingDate: "2024",
@@ -80,13 +80,13 @@ const breadcrumbAboutSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://alentro-website.vercel.app",
+      item: "https://alentroglobalservices.com",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "About Us",
-      item: "https://alentro-website.vercel.app/about",
+      item: "https://alentroglobalservices.com/about",
     },
   ],
 };

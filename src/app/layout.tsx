@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://alentro-website.vercel.app"),
+  metadataBase: new URL("https://alentroglobalservices.com"),
   title: {
     default: "Alentro Global Services | IT Company Mumbai & India",
     template: "%s | Alentro Global Services",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Alentro Global Services" }],
   creator: "Alentro Global Services",
   alternates: {
-    canonical: "https://alentro-website.vercel.app",
+    canonical: "https://alentroglobalservices.com",
   },
   verification: {
     google: "z1mXmW6M_NsHpunXDZk5FRyiHx39_7kCgQwjTvAOpx8",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://alentro-website.vercel.app",
+    url: "https://alentroglobalservices.com",
     siteName: "Alentro Global Services",
     title: "Alentro Global Services | IT Company Mumbai & India",
     description:
@@ -78,20 +78,20 @@ export const metadata: Metadata = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://alentro-website.vercel.app/#website",
+  "@id": "https://alentroglobalservices.com/#website",
   name: "Alentro Global Services",
-  url: "https://alentro-website.vercel.app",
+  url: "https://alentroglobalservices.com",
   description:
     "IT company in Mumbai providing IT infrastructure, cloud services, cybersecurity, AMC, helpdesk and IT consulting.",
   publisher: {
-    "@id": "https://alentro-website.vercel.app/#organization",
+    "@id": "https://alentroglobalservices.com/#organization",
   },
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
       urlTemplate:
-        "https://alentro-website.vercel.app/?s={search_term_string}",
+        "https://alentroglobalservices.com/?s={search_term_string}",
     },
     "query-input": "required name=search_term_string",
   },

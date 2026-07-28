@@ -39,9 +39,9 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: [
-      "https://alentro-website.vercel.app/sitemap.xml",
-      "https://alentro-website.vercel.app/llms.txt",
+      "https://alentroglobalservices.com/sitemap.xml",
+      "https://alentroglobalservices.com/llms.txt",
     ],
-    host: "https://alentro-website.vercel.app",
+    host: "https://alentroglobalservices.com",
   };
 }

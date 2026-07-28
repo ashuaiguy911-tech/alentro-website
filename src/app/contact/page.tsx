@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   keywords:
     "contact IT company Mumbai, IT support Mumbai contact, IT services Mumbai phone, Alentro Global Services contact, IT helpdesk Mumbai",
   alternates: {
-    canonical: "https://alentro-website.vercel.app/contact",
-    languages: { "en-IN": "https://alentro-website.vercel.app/contact" },
+    canonical: "https://alentroglobalservices.com/contact",
+    languages: { "en-IN": "https://alentroglobalservices.com/contact" },
   },
 };
 
@@ -25,13 +25,13 @@ const breadcrumbContactSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://alentro-website.vercel.app",
+      item: "https://alentroglobalservices.com",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Contact Us",
-      item: "https://alentro-website.vercel.app/contact",
+      item: "https://alentroglobalservices.com/contact",
     },
   ],
 };
@@ -41,10 +41,10 @@ const contactPageSchema = {
   "@type": "ContactPage",
   name: "Contact Alentro Global Services",
   description: "Contact page for Alentro Global Services IT company in Mumbai",
-  url: "https://alentro-website.vercel.app/contact",
+  url: "https://alentroglobalservices.com/contact",
   mainEntity: {
     "@type": "Organization",
-    "@id": "https://alentro-website.vercel.app/#organization",
+    "@id": "https://alentroglobalservices.com/#organization",
     name: "Alentro Global Services",
     telephone: "+91-7045400592",
     email: "info@alentroglobal.com",

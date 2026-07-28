@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { servicePages } from "@/data/service-detail-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://alentro-website.vercel.app";
+  const baseUrl = "https://alentroglobalservices.com";
 
   const serviceSlugEntries: MetadataRoute.Sitemap = servicePages.map((s) => ({
     url: `${baseUrl}/services/${s.slug}`,

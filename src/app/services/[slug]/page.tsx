@@ -8,7 +8,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import CTABanner from "@/components/CTABanner";
 import { servicePages, getServiceBySlug } from "@/data/service-detail-data";
 
-const BASE = "https://alentro-website.vercel.app";
+const BASE = "https://alentroglobalservices.com";
 
 export async function generateStaticParams() {
   return servicePages.map((s) => ({ slug: s.slug }));

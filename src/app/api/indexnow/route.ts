@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const INDEXNOW_KEY = "11d4d6abab7b4ccabe5fee628da8df94";
-const HOST = "https://alentro-website.vercel.app";
+const HOST = "https://alentroglobalservices.com";
 
 const URLS = [
   `${HOST}/`,

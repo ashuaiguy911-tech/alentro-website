@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTABanner from "@/components/CTABanner";
 
-const BASE = "https://alentro-website.vercel.app";
+const BASE = "https://alentroglobalservices.com";
 
 export const metadata: Metadata = {
   title: "How to Choose an IT Partner in Mumbai | Complete Buyer's Guide",
