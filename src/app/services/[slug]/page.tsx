@@ -95,54 +95,35 @@ export default async function ServicePage({
       <Navbar />
       <main>
         {/* Hero */}
-        <section
-          className="pt-32 pb-20"
-          style={{ background: "var(--color-primary)" }}
-          aria-labelledby="service-hero-heading"
-        >
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative w-full bg-gradient-to-br from-[#0F1F3D] to-[#1a2e52] text-white py-24 md:py-40 overflow-hidden" aria-labelledby="service-hero-heading">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#38BDF8] rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#0369A1] rounded-full blur-3xl"></div>
+          </div>
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" className="mb-6">
               <ol className="flex items-center gap-2 text-sm text-white/50">
-                <li>
-                  <Link href="/" className="hover:text-white/80 transition-colors">
-                    Home
-                  </Link>
-                </li>
+                <li><Link href="/" className="hover:text-white/80 transition-colors">Home</Link></li>
                 <li aria-hidden="true">/</li>
-                <li>
-                  <Link href="/services" className="hover:text-white/80 transition-colors">
-                    Services
-                  </Link>
-                </li>
+                <li><Link href="/services" className="hover:text-white/80 transition-colors">Services</Link></li>
                 <li aria-hidden="true">/</li>
                 <li className="text-white/80 truncate max-w-[200px]">{svc.name}</li>
               </ol>
             </nav>
 
-            <span className="text-accent-light font-semibold text-sm uppercase tracking-widest">
-              IT Services Mumbai
-            </span>
-            <h1
-              id="service-hero-heading"
-              className="mt-3 text-4xl sm:text-5xl font-bold text-white leading-tight"
-            >
+            <span className="text-[#38BDF8] font-semibold text-sm uppercase tracking-widest">IT Services Mumbai</span>
+            <h1 id="service-hero-heading" className="mt-3 text-5xl md:text-6xl font-bold text-white leading-tight">
               {svc.h1}
             </h1>
-            <p className="mt-6 text-white/70 text-lg max-w-3xl leading-relaxed">
+            <p className="mt-6 text-gray-200 text-xl max-w-3xl leading-relaxed">
               {svc.shortDescription}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/contact"
-                className="inline-block bg-accent hover:bg-accent-dark text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 cursor-pointer text-center"
-              >
+              <Link href="/contact" className="inline-block bg-[#38BDF8] hover:bg-[#0369A1] text-[#0F1F3D] font-bold py-3 px-8 rounded-lg transition duration-200 text-center">
                 Get a Free Quote
               </Link>
-              <a
-                href="tel:+917045400592"
-                className="inline-block border border-white/30 hover:border-white/60 text-white hover:bg-white/10 font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 cursor-pointer text-center"
-              >
+              <a href="tel:+917045400592" className="inline-block border-2 border-[#38BDF8] text-[#38BDF8] hover:bg-[#38BDF8] hover:text-[#0F1F3D] font-bold py-3 px-8 rounded-lg transition duration-200 text-center">
                 Call +91-7045400592
               </a>
             </div>
@@ -150,18 +131,15 @@ export default async function ServicePage({
         </section>
 
         {/* About this service */}
-        <section className="py-20 bg-white" aria-labelledby="about-heading">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              id="about-heading"
-              className="text-3xl sm:text-4xl font-bold text-primary mb-8"
-            >
+        <section className="py-20 md:py-28 bg-white" aria-labelledby="about-heading">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 id="about-heading" className="text-4xl md:text-5xl font-bold text-[#0F1F3D] mb-8">
               About This Service
             </h2>
-            <div className="prose prose-lg max-w-none text-text-muted space-y-5">
-              <p className="leading-relaxed">{svc.fullDescription}</p>
+            <div className="space-y-5">
+              <p className="text-lg text-gray-700 leading-relaxed">{svc.fullDescription}</p>
               {svc.extendedParagraphs.map((para, i) => (
-                <p key={i} className="leading-relaxed">
+                <p key={i} className="text-lg text-gray-700 leading-relaxed">
                   {para}
                 </p>
               ))}

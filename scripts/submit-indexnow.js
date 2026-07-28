@@ -8,6 +8,7 @@ const HOST = "alentroglobalservices.com";
 const URLS = [
   `https://${HOST}/`,
   `https://${HOST}/services`,
+  `https://${HOST}/services/data-annotation`,
   `https://${HOST}/about`,
   `https://${HOST}/contact`,
   `https://${HOST}/services/it-infrastructure-setup`,
