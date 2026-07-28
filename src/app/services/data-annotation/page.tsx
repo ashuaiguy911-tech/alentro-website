@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -88,6 +89,86 @@ const breadcrumbSchema = {
     { "@type": "ListItem", position: 3, name: "Data Annotation", item: "https://alentroglobalservices.com/services/data-annotation" },
   ],
 };
+
+// Data Annotation FAQ items
+const faqItems = [
+  {
+    question: "What types of data annotation do you support?",
+    answer: "We support image annotation (bounding boxes, polygons, semantic segmentation), text annotation (classification, NER, sentiment analysis), audio annotation (transcription, speaker diarization), video annotation (action recognition, tracking), 3D point cloud annotation, and document annotation (forms, invoices, receipts).",
+  },
+  {
+    question: "What is your data annotation accuracy rate?",
+    answer: "Our data annotation services maintain 99%+ accuracy rates through multiple quality assurance rounds including inter-annotator agreement checks, automated validation, and expert manual review. We can customize QA levels based on your project requirements.",
+  },
+  {
+    question: "What industries and use cases do you serve?",
+    answer: "We serve autonomous vehicles, computer vision, NLP, medical imaging, satellite imagery, e-commerce, retail, autonomous robots, industrial automation, healthcare AI, and many other AI/ML applications. Our annotators have industry-specific expertise.",
+  },
+  {
+    question: "What is the typical timeline for data annotation projects?",
+    answer: "Project timelines depend on volume and complexity. Small projects (10K-100K data points) typically take 2-4 weeks. Large-scale projects (1M+ points) are handled with parallel teams for faster delivery. Rush timelines are available with premium rates.",
+  },
+  {
+    question: "How do you handle data security and confidentiality?",
+    answer: "All data is handled securely with ISO 27001 compliance, NDA agreements, encrypted storage, role-based access control, and audit trails. We support on-premise annotation, air-gapped systems, and HIPAA/GDPR compliance as needed.",
+  },
+];
+
+// FAQ Accordion component for Data Annotation page
+function DataAnnotationFAQAccordion() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const reduced = useReducedMotion();
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {faqItems.map((item, index) => (
+        <motion.div
+          key={index}
+          initial={reduced ? false : { opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, delay: index * 0.05 }}
+          className="border-b"
+          style={{ borderColor: "#e2e8f0" }}
+        >
+          <button
+            onClick={() => setOpenIndex(openIndex === index ? null : index)}
+            className="w-full text-left py-6 flex items-start justify-between gap-4 hover:text-opacity-100 transition-colors"
+            style={{ color: "#0F1F3D" }}
+            aria-expanded={openIndex === index}
+          >
+            <span className="font-bold text-lg leading-tight flex-1">{item.question}</span>
+            <motion.div
+              animate={{ rotate: openIndex === index ? 45 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="flex-shrink-0 mt-1"
+              style={{ color: "#38BDF8" }}
+              aria-hidden="true"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+            </motion.div>
+          </button>
+
+          <motion.div
+            initial={false}
+            animate={{
+              opacity: openIndex === index ? 1 : 0,
+              height: openIndex === index ? "auto" : 0,
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <p className="pb-6 text-base leading-relaxed" style={{ color: "#1e293b" }}>
+              {item.answer}
+            </p>
+          </motion.div>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
 
 export default function DataAnnotationService() {
   const [formData, setFormData] = useState({
@@ -269,6 +350,28 @@ export default function DataAnnotationService() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* FAQ SECTION */}
+        <section className="w-full py-20 md:py-28 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section Label */}
+            <div className="text-center mb-4">
+              <span style={{ color: "#38BDF8" }} className="text-sm font-bold uppercase tracking-wider">
+                FAQ
+              </span>
+            </div>
+
+            {/* Heading */}
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#0F1F3D]">
+                Frequently Asked <span style={{ color: "#38BDF8" }}>Questions</span>
+              </h2>
+            </div>
+
+            {/* FAQ Accordion */}
+            <DataAnnotationFAQAccordion />
           </div>
         </section>
 

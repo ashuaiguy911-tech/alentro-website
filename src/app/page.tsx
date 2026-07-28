@@ -107,10 +107,74 @@ const faqSchema = {
     },
     {
       "@type": "Question",
+      name: "How much does IT AMC cost in Mumbai?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "IT Annual Maintenance Contracts (AMC) with Alentro Global Services start at ₹8,000/month for small businesses and scale up based on infrastructure size, number of devices, and service level agreements. Contact us for a customized quote.",
+      },
+    },
+    {
+      "@type": "Question",
       name: "Does Alentro provide 24/7 IT support?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, Alentro Global Services provides 24/7 IT support for businesses in Mumbai and across India. Our helpdesk is available round-the-clock via phone, email, and WhatsApp (+91-7045400592).",
+        text: "Yes, Alentro Global Services provides 24/7 IT support with guaranteed SLAs. Our helpdesk is available round-the-clock via phone, email, and WhatsApp (+91-7045400592) with standard 4-hour response and 1-hour premium response options.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Which areas in Mumbai does Alentro serve?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alentro Global Services serves all areas in Mumbai including South Mumbai, Central Mumbai, Western Suburbs, Eastern Suburbs, and Northern Suburbs. We also provide Pan-India IT support services with remote and on-site options.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the response time for IT support?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alentro Global Services guarantees a 4-hour standard response time for most IT issues. Premium SLA customers receive 1-hour response time. Critical issues are prioritized and resolved faster.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Alentro offer cloud migration services?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, Alentro Global Services offers comprehensive cloud migration services for AWS, Microsoft Azure, and Google Cloud Platform (GCP). We handle planning, execution, and post-migration support with zero downtime.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What cybersecurity services does Alentro provide?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alentro Global Services provides enterprise firewall deployment (Fortinet, Sophos, Cisco), vulnerability assessments, penetration testing, EDR (Endpoint Detection & Response), data backup solutions, and compliance management (ISO 27001, GDPR, HIPAA).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I get a free IT consultation?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can get a free IT consultation by contacting Alentro Global Services via phone (+91-7045400592), email (info@alentroglobal.com), or using the contact form on our website. We respond within 24 hours.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Alentro serve businesses outside Mumbai?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, Alentro Global Services provides Pan-India IT support with both remote and on-site options. We serve businesses across all major Indian cities including Delhi, Bangalore, Pune, Hyderabad, and Chennai.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What industries does Alentro Global Services serve?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alentro Global Services serves IT & Technology, Manufacturing, Healthcare, BFSI (Banking, Financial Services, Insurance), BPO & KPO, Education, Government, and Retail & E-commerce industries.",
       },
     },
   ],
@@ -206,6 +270,109 @@ const services = [
     tags: ["Contract", "Direct", "Flexi"],
   },
 ];
+
+// FAQ items with 10 questions
+const faqItems = [
+  {
+    question: "What IT services does Alentro Global Services offer?",
+    answer: "Alentro Global Services offers IT Infrastructure Setup, Data Annotation, Annual Maintenance Contracts (AMC), Helpdesk Services, Network and Server Management, Cybersecurity Solutions, Cloud Services (AWS, Azure, GCP), Staff Augmentation, and IT Consulting — all available for businesses in Mumbai and across India.",
+  },
+  {
+    question: "How much does IT AMC cost in Mumbai?",
+    answer: "IT Annual Maintenance Contracts (AMC) with Alentro Global Services start at ₹8,000/month for small businesses and scale up based on infrastructure size, number of devices, and service level agreements. Contact us for a customized quote.",
+  },
+  {
+    question: "Does Alentro provide 24/7 IT support?",
+    answer: "Yes, Alentro Global Services provides 24/7 IT support with guaranteed SLAs. Our helpdesk is available round-the-clock via phone, email, and WhatsApp (+91-7045400592) with standard 4-hour response and 1-hour premium response options.",
+  },
+  {
+    question: "Which areas in Mumbai does Alentro serve?",
+    answer: "Alentro Global Services serves all areas in Mumbai including South Mumbai, Central Mumbai, Western Suburbs, Eastern Suburbs, and Northern Suburbs. We also provide Pan-India IT support services with remote and on-site options.",
+  },
+  {
+    question: "What is the response time for IT support?",
+    answer: "Alentro Global Services guarantees a 4-hour standard response time for most IT issues. Premium SLA customers receive 1-hour response time. Critical issues are prioritized and resolved faster.",
+  },
+  {
+    question: "Does Alentro offer cloud migration services?",
+    answer: "Yes, Alentro Global Services offers comprehensive cloud migration services for AWS, Microsoft Azure, and Google Cloud Platform (GCP). We handle planning, execution, and post-migration support with zero downtime.",
+  },
+  {
+    question: "What cybersecurity services does Alentro provide?",
+    answer: "Alentro Global Services provides enterprise firewall deployment (Fortinet, Sophos, Cisco), vulnerability assessments, penetration testing, EDR (Endpoint Detection & Response), data backup solutions, and compliance management (ISO 27001, GDPR, HIPAA).",
+  },
+  {
+    question: "How do I get a free IT consultation?",
+    answer: "You can get a free IT consultation by contacting Alentro Global Services via phone (+91-7045400592), email (info@alentroglobal.com), or using the contact form on our website. We respond within 24 hours.",
+  },
+  {
+    question: "Does Alentro serve businesses outside Mumbai?",
+    answer: "Yes, Alentro Global Services provides Pan-India IT support with both remote and on-site options. We serve businesses across all major Indian cities including Delhi, Bangalore, Pune, Hyderabad, and Chennai.",
+  },
+  {
+    question: "What industries does Alentro Global Services serve?",
+    answer: "Alentro Global Services serves IT & Technology, Manufacturing, Healthcare, BFSI (Banking, Financial Services, Insurance), BPO & KPO, Education, Government, and Retail & E-commerce industries.",
+  },
+];
+
+// FAQ Accordion component with Framer Motion
+function FAQAccordion() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const reduced = useReducedMotion();
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {faqItems.map((item, index) => (
+        <motion.div
+          key={index}
+          initial={reduced ? false : { opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, delay: index * 0.05 }}
+          className="border-b"
+          style={{ borderColor: "var(--color-gray-200)" }}
+        >
+          <button
+            onClick={() => setOpenIndex(openIndex === index ? null : index)}
+            className="w-full text-left py-6 flex items-start justify-between gap-4 hover:text-opacity-100 transition-colors"
+            style={{ color: "var(--color-navy)" }}
+            aria-expanded={openIndex === index}
+          >
+            <span className="font-bold text-lg leading-tight flex-1">{item.question}</span>
+            <motion.div
+              animate={{ rotate: openIndex === index ? 45 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="flex-shrink-0 mt-1"
+              style={{ color: "var(--color-highlight)" }}
+              aria-hidden="true"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+            </motion.div>
+          </button>
+
+          <motion.div
+            initial={false}
+            animate={{
+              opacity: openIndex === index ? 1 : 0,
+              height: openIndex === index ? "auto" : 0,
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <p
+              className="pb-6 text-base leading-relaxed"
+              style={{ color: "var(--color-text)" }}
+            >
+              {item.answer}
+            </p>
+          </motion.div>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
 
 export default function Home() {
   const reduced = useReducedMotion();
@@ -513,6 +680,42 @@ export default function Home() {
                 );
               })}
             </motion.div>
+          </div>
+        </section>
+
+        {/* ====================================================================
+            FAQ SECTION - PREMIUM ACCORDION
+            ==================================================================== */}
+        <section className="w-full py-20 md:py-28" style={{ backgroundColor: "var(--color-gray-50)" }}>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section Label */}
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.4 }}
+              className="text-center mb-4"
+            >
+              <span style={{ color: "var(--color-highlight)" }} className="text-sm font-bold uppercase tracking-wider">
+                FAQ
+              </span>
+            </motion.div>
+
+            {/* Heading */}
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold" style={{ color: "var(--color-navy)" }}>
+                Frequently Asked <span style={{ color: "var(--color-highlight)" }}>Questions</span>
+              </h2>
+            </motion.div>
+
+            {/* FAQ Accordion */}
+            <FAQAccordion />
           </div>
         </section>
 
