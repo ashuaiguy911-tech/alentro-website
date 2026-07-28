@@ -3,13 +3,23 @@
 // Submits all Alentro pages to IndexNow (Bing + indexnow.org)
 
 const INDEXNOW_KEY = "11d4d6abab7b4ccabe5fee628da8df94";
-const HOST = "alentro-website.vercel.app";
+const HOST = "alentroglobalservices.com";
 
 const URLS = [
   `https://${HOST}/`,
   `https://${HOST}/services`,
   `https://${HOST}/about`,
   `https://${HOST}/contact`,
+  `https://${HOST}/services/it-infrastructure-setup`,
+  `https://${HOST}/services/annual-maintenance-contracts`,
+  `https://${HOST}/services/in-house-it-support`,
+  `https://${HOST}/services/helpdesk-services`,
+  `https://${HOST}/services/network-server-management`,
+  `https://${HOST}/services/cybersecurity-solutions`,
+  `https://${HOST}/services/cloud-services`,
+  `https://${HOST}/services/staff-augmentation`,
+  `https://${HOST}/services/it-consulting`,
+  `https://${HOST}/guides/choosing-it-partner-mumbai`,
 ];
 
 const payload = {
