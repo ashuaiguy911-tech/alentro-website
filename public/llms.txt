@@ -1,29 +1,59 @@
 # Alentro Global Services
 
-> Founded 2024, Alentro Global Services combines outsourced sales & support operations, IT staff augmentation, and managed IT services for businesses across fintech, education, and civic outreach sectors.
+> End-to-end IT services and data annotation company in Mumbai, India.
+> Founded 2024. Pan-India operations. 24/7 support.
 
-Alentro Global Services delivers outsourced operations (sales seats, support desks), IT staff augmentation, and managed IT services to businesses across Mumbai and Pan-India. Founded in 2024 by founders with deep expertise in IT operations, sales, and business consulting, we operate with 4 active client engagements. We maintain a 99.9% uptime SLA and offer 24/7 support via phone, email, and WhatsApp at +91-7045400592.
+Alentro Global Services delivers comprehensive IT infrastructure, cloud services, cybersecurity, data annotation, and staff augmentation to businesses across Mumbai and Pan-India. 24/7 support via phone (+91-7045400592), email (info@alentroglobal.com), and WhatsApp.
 
-## Services
+## Core Services
 
-- [IT Infrastructure Setup](https://alentroglobalservices.com/services): Complete server, storage, networking, and workstation design, procurement, and deployment.
-- [Annual Maintenance Contracts (AMC)](https://alentroglobalservices.com/services): Comprehensive hardware, software, and network maintenance with quarterly health checks.
-- [Helpdesk Services](https://alentroglobalservices.com/services): 24/7 multi-tier L1/L2/L3 support with defined SLA response and resolution windows.
-- [Cloud Services — AWS, Azure, GCP](https://alentroglobalservices.com/services): Cloud migration, architecture design, managed operations, and FinOps cost optimisation.
-- [Cybersecurity Solutions](https://alentroglobalservices.com/services): NGFW deployment (Fortinet, Sophos, Cisco), vulnerability assessment, penetration testing, and EDR.
-- [Network and Server Management](https://alentroglobalservices.com/services): Proactive LAN/WAN monitoring, configuration management, and performance optimisation.
-- [IT Consulting](https://alentroglobalservices.com/services): IT strategy, roadmap planning, vendor selection, and digital transformation advisory.
-- [Staff Augmentation](https://alentroglobalservices.com/services): Certified IT professionals on flexible short-term or long-term contracts across all verticals.
-- [In-House IT Support](https://alentroglobalservices.com/services): Dedicated on-site IT professionals embedded within your organisation.
-- [Data Backup and Recovery](https://alentroglobalservices.com/services): Backup strategy, disaster recovery planning, and business continuity solutions.
+- [IT Infrastructure Setup](https://alentroglobalservices.com/services/it-infrastructure-setup): Complete server, storage, networking, and workstation design, procurement, and deployment.
+
+- [Data Annotation Services](https://alentroglobalservices.com/services/data-annotation): Image, text, audio, video, 3D point cloud, and document annotation for AI/ML models. 100% quality assured. 500+ annotators. 10M+ data points processed.
+
+- [Cloud Services — AWS, Azure, GCP](https://alentroglobalservices.com/services/cloud-services): Cloud migration, architecture design, managed operations, and FinOps cost optimisation.
+
+- [Cybersecurity Solutions](https://alentroglobalservices.com/services/cybersecurity-solutions): NGFW deployment (Fortinet, Sophos, Cisco), vulnerability assessment, penetration testing, EDR, and compliance.
+
+- [Annual Maintenance Contracts (AMC)](https://alentroglobalservices.com/services/annual-maintenance-contracts): Comprehensive hardware, software, and network maintenance with quarterly health checks and dedicated account management.
+
+- [In-House IT Support](https://alentroglobalservices.com/services/in-house-it-support): Dedicated on-site IT professionals embedded within your organisation for same-floor issue resolution.
+
+- [Helpdesk Services](https://alentroglobalservices.com/services/helpdesk-services): 24/7 multi-tier L1/L2/L3 support with defined SLA response windows and real-time ticket tracking.
+
+- [Network & Server Management](https://alentroglobalservices.com/services/network-server-management): Proactive 24/7 LAN/WAN monitoring, configuration management, firmware updates, and capacity planning.
+
+- [Staff Augmentation](https://alentroglobalservices.com/services/staff-augmentation): Pre-screened certified IT professionals on flexible short-term or long-term contracts. Rapid deployment within 5-10 days.
+
+- [IT Consulting](https://alentroglobalservices.com/services/it-consulting): IT strategy, roadmap planning, vendor selection, digital transformation advisory, and virtual CIO services.
+
+## Industries Served
+
+- IT & Technology
+- Manufacturing
+- Healthcare
+- BFSI (Banking, Financial Services, Insurance)
+- BPO & KPO
+- Education
+- Government
+- Retail & E-commerce
 
 ## Company
 
-- [About Alentro Global Services](https://alentroglobalservices.com/about): Our story, mission, vision, and values.
-- [Contact Us](https://alentroglobalservices.com/contact): Call or WhatsApp +91-7045400592, or submit an enquiry. Based in Mumbai, Maharashtra, India — 400001.
+- [Homepage](https://alentroglobalservices.com): Main website with service overview, how we work, and contact options.
+- [About Alentro](https://alentroglobalservices.com/about): Company story, mission, vision, team, and values.
+- [Contact Us](https://alentroglobalservices.com/contact): Get in touch — phone, email, contact form, WhatsApp. Based in Mumbai, Maharashtra, India.
+- [IT Partner Guide](https://alentroglobalservices.com/guides/choosing-it-partner-mumbai): Comprehensive guide for choosing an IT partner in Mumbai.
+- [LinkedIn](https://www.linkedin.com/company/alentro-global-services): Company profile, updates, and team announcements.
 
-## Optional
+## Sitemaps & Standards
 
-- [XML Sitemap](https://alentroglobalservices.com/sitemap.xml): Full sitemap for search engine crawlers.
-- [HTML Sitemap](https://alentroglobalservices.com/sitemap-html): Human-readable sitemap of all pages.
-- [LinkedIn](https://www.linkedin.com/company/alentro-global-services): Company profile, updates, and team.
+- [XML Sitemap](https://alentroglobalservices.com/sitemap.xml): Full sitemap with 15 URLs for search engine crawlers.
+- [Robots.txt](https://alentroglobalservices.com/robots.txt): Search engine crawl directives.
+
+## Contact
+
+- **Phone/WhatsApp**: +91-7045400592
+- **Email**: info@alentroglobal.com
+- **Website**: https://alentroglobalservices.com
+- **Location**: Mumbai, Maharashtra, India

@@ -5,6 +5,90 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { useState } from "react";
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Data Annotation Services",
+  description: "High-quality data annotation services for AI and machine learning models including image, text, audio, video, 3D point cloud, and document annotation. 100% quality assured with 24/7 monitoring.",
+  provider: {
+    "@type": "Organization",
+    name: "Alentro Global Services",
+    url: "https://alentroglobalservices.com",
+    logo: "https://alentroglobalservices.com/logo.png",
+  },
+  areaServed: { "@type": "Country", name: "India" },
+  serviceType: "Data Annotation",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Annotation Types",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Image Annotation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Text Annotation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Video Annotation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Audio Annotation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "3D Point Cloud Annotation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Document Processing" } },
+    ],
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What types of data annotation does Alentro offer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alentro offers comprehensive data annotation services including image annotation (bounding boxes, segmentation, classification), text annotation (NER, sentiment analysis, classification), video annotation with frame-by-frame and tracking, audio transcription and annotation, 3D point cloud annotation for autonomous vehicles, and document processing services.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How accurate is Alentro's data annotation service?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alentro maintains 100% quality assurance through multi-level QA checks and human review. Every annotated dataset undergoes rigorous validation before delivery, ensuring contextually accurate and industry-compliant labeled data for your AI/ML models.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What industries do you provide data annotation for?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alentro supports data annotation across all major industries including autonomous vehicles, healthcare and medical imaging, e-commerce and retail, natural language processing, computer vision, robotics, document intelligence, and quality assurance testing.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long does a data annotation project take?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Project timelines depend on data volume, annotation complexity, and quality requirements. We can scale rapidly from thousands to millions of data points using our 500+ skilled annotators. Contact us for a specific timeline estimate based on your project scope.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How is data security handled during annotation?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alentro follows enterprise-grade security protocols with ISO 27001 compliance. All data is handled with strict confidentiality agreements, secure infrastructure, access controls, and audit trails to ensure your proprietary data remains protected throughout the annotation process.",
+      },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://alentroglobalservices.com" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://alentroglobalservices.com/services" },
+    { "@type": "ListItem", position: 3, name: "Data Annotation", item: "https://alentroglobalservices.com/services/data-annotation" },
+  ],
+};
+
 export default function DataAnnotationService() {
   const [formData, setFormData] = useState({
     name: "",
@@ -29,6 +113,10 @@ export default function DataAnnotationService() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }} />
+
       <Navbar />
 
       <main className="w-full">
