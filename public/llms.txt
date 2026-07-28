@@ -3,7 +3,7 @@
 > End-to-end IT services and data annotation company in Mumbai, India.
 > Founded 2024. Pan-India operations. 24/7 support.
 
-Alentro Global Services delivers comprehensive IT infrastructure, cloud services, cybersecurity, data annotation, and staff augmentation to businesses across Mumbai and Pan-India. 24/7 support via phone (+91-7045400592), email (info@alentroglobal.com), and WhatsApp.
+Alentro Global Services delivers comprehensive IT infrastructure, cloud services, cybersecurity, data annotation, and staff augmentation to businesses across Mumbai and Pan-India. 24/7 support via phone (+91-7045400592), email (alentroglobalservices@gmail.com), and WhatsApp.
 
 ## Core Services
 
@@ -54,6 +54,6 @@ Alentro Global Services delivers comprehensive IT infrastructure, cloud services
 ## Contact
 
 - **Phone/WhatsApp**: +91-7045400592
-- **Email**: info@alentroglobal.com
+- **Email**: alentroglobalservices@gmail.com
 - **Website**: https://alentroglobalservices.com
 - **Location**: Mumbai, Maharashtra, India

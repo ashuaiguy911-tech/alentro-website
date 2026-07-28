@@ -19,14 +19,18 @@ const localBusinessSchema = {
   logo: "https://alentroglobalservices.com/logo.png",
   image: "https://alentroglobalservices.com/og-image.png",
   telephone: "+91-7045400592",
-  email: "info@alentroglobal.com",
+  email: "alentroglobalservices@gmail.com",
   foundingDate: "2024",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Mumbai, Maharashtra",
     addressLocality: "Mumbai",
     addressRegion: "Maharashtra",
-    addressCountry: "IN",
     postalCode: "400001",
+    addressCountry: {
+      "@type": "Country",
+      name: "IN",
+    },
   },
   geo: {
     "@type": "GeoCoordinates",
@@ -158,7 +162,7 @@ const faqSchema = {
       name: "How do I get a free IT consultation?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "You can get a free IT consultation by contacting Alentro Global Services via phone (+91-7045400592), email (info@alentroglobal.com), or using the contact form on our website. We respond within 24 hours.",
+        text: "You can get a free IT consultation by contacting Alentro Global Services via phone (+91-7045400592), email (alentroglobalservices@gmail.com), or using the contact form on our website. We respond within 24 hours.",
       },
     },
     {
@@ -303,7 +307,7 @@ const faqItems = [
   },
   {
     question: "How do I get a free IT consultation?",
-    answer: "You can get a free IT consultation by contacting Alentro Global Services via phone (+91-7045400592), email (info@alentroglobal.com), or using the contact form on our website. We respond within 24 hours.",
+    answer: "You can get a free IT consultation by contacting Alentro Global Services via phone (+91-7045400592), email (alentroglobalservices@gmail.com), or using the contact form on our website. We respond within 24 hours.",
   },
   {
     question: "Does Alentro serve businesses outside Mumbai?",

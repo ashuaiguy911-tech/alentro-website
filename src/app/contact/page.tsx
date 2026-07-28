@@ -47,7 +47,7 @@ const contactPageSchema = {
     "@id": "https://alentroglobalservices.com/#organization",
     name: "Alentro Global Services",
     telephone: "+91-7045400592",
-    email: "info@alentroglobal.com",
+    email: "alentroglobalservices@gmail.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Mumbai",
