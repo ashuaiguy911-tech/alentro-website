@@ -4,7 +4,12 @@
       "source": "/(.*)",
       "destination": "https://alentroglobalservices.com/$1",
       "permanent": true,
-      "statusCode": 301
+      "has": [
+        {
+          "type": "host",
+          "value": "alentro-website.vercel.app"
+        }
+      ]
     }
   ]
 }
