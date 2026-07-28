@@ -226,7 +226,7 @@ function AnimatedCounter({ value }: { value: number }) {
     requestAnimationFrame(animate);
   }, [isInView, value, reduced]);
 
-  return <span ref={ref}>{displayValue}%</span>;
+  return <span ref={ref}>{displayValue}</span>;
 }
 
 // Service cards data
@@ -528,24 +528,15 @@ export default function Home() {
               className="grid grid-cols-2 md:grid-cols-4 gap-8"
             >
               {[
-                { label: "Client Uptime", value: 99 },
-                { label: "Response Time", value: 4, unit: "hrs" },
-                { label: "Pan-India Reach", value: 15, unit: "states" },
-                { label: "AI Data Labeled", value: 10, unit: "M+" },
+                { label: "Client Uptime", value: 99, suffix: "%" },
+                { label: "Response Time", value: 4, suffix: "hrs" },
+                { label: "States Pan-India", value: 15, suffix: "+" },
+                { label: "Data Points Labeled", value: 10, suffix: "M+" },
               ].map((stat, i) => (
                 <motion.div key={i} variants={itemVariants} className="text-center">
                   <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: "var(--color-highlight)" }}>
-                    {stat.unit ? (
-                      <>
-                        <AnimatedCounter value={stat.value} />
-                        <span className="text-xl">{stat.unit}</span>
-                      </>
-                    ) : (
-                      <>
-                        <AnimatedCounter value={stat.value} />
-                        <span className="text-xl">%</span>
-                      </>
-                    )}
+                    <AnimatedCounter value={stat.value} />
+                    <span className="text-xl">{stat.suffix}</span>
                   </div>
                   <p className="text-sm" style={{ color: "var(--color-gray-400)" }}>
                     {stat.label}
