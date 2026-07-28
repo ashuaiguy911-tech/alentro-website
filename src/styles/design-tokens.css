@@ -1,0 +1,336 @@
+/* ============================================================================
+   ALENTRO GLOBAL SERVICES - AWWWARDS PREMIUM DESIGN SYSTEM
+   ============================================================================ */
+
+:root {
+  /* ========================================================================
+     BRAND COLORS
+     ======================================================================== */
+  --color-navy: #0F1F3D;
+  --color-navy-light: #1a3260;
+  --color-navy-dark: #080f1e;
+
+  --color-accent: #0369A1;
+  --color-accent-light: #0284c7;
+  --color-accent-lighter: #06b6d4;
+
+  --color-highlight: #38BDF8;
+  --color-highlight-soft: #7dd3fc;
+  --color-highlight-lighter: #bae6fd;
+
+  --color-white: #FFFFFF;
+
+  /* Grays for text and backgrounds */
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1e293b;
+  --color-gray-900: #0f172a;
+
+  /* ========================================================================
+     TYPOGRAPHY SCALE - Fluid, responsive sizes
+     ======================================================================== */
+  --text-hero: clamp(2.5rem, 6vw, 5rem);
+  --text-h1: clamp(2rem, 4vw, 3.5rem);
+  --text-h2: clamp(1.5rem, 3vw, 2.5rem);
+  --text-h3: clamp(1.125rem, 2vw, 1.5rem);
+  --text-h4: clamp(1rem, 1.5vw, 1.25rem);
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-xs: 0.75rem;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* ========================================================================
+     SPACING SCALE - Consistent rhythm
+     ======================================================================== */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-4xl: 6rem;
+  --spacing-5xl: 8rem;
+
+  --section-padding: clamp(4rem, 8vw, 8rem);
+  --section-padding-sm: clamp(2rem, 4vw, 4rem);
+
+  --container-max: 1280px;
+  --container-padding: clamp(1rem, 4vw, 2rem);
+
+  /* ========================================================================
+     MOTION & TIMING - Smooth, intentional animations
+     ======================================================================== */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+  --duration-slower: 1000ms;
+
+  /* ========================================================================
+     SHADOWS - Depth and hierarchy
+     ======================================================================== */
+  --shadow-none: 0 0 0 transparent;
+  --shadow-xs: 0 1px 2px rgba(15, 31, 61, 0.05);
+  --shadow-sm: 0 1px 3px rgba(15, 31, 61, 0.1);
+  --shadow-md: 0 4px 16px rgba(15, 31, 61, 0.15);
+  --shadow-lg: 0 8px 32px rgba(15, 31, 61, 0.2);
+  --shadow-xl: 0 12px 48px rgba(15, 31, 61, 0.25);
+  --shadow-glow: 0 0 40px rgba(56, 189, 248, 0.2);
+  --shadow-glow-accent: 0 0 40px rgba(3, 105, 161, 0.15);
+
+  /* ========================================================================
+     BORDER RADIUS - Modern, fluid curves
+     ======================================================================== */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* ========================================================================
+     BACKDROP & GLASS EFFECTS
+     ======================================================================== */
+  --backdrop-blur: blur(10px);
+  --glass-bg: rgba(15, 31, 61, 0.7);
+  --glass-border: 1px solid rgba(56, 189, 248, 0.15);
+
+  /* ========================================================================
+     Z-INDEX SCALE
+     ======================================================================== */
+  --z-hide: -1;
+  --z-auto: auto;
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-tooltip: 70;
+
+  /* ========================================================================
+     TRANSITIONS - Consistent motion language
+     ======================================================================== */
+  --transition-fast: all var(--duration-fast) var(--ease-smooth);
+  --transition-normal: all var(--duration-normal) var(--ease-smooth);
+  --transition-slow: all var(--duration-slow) var(--ease-smooth);
+}
+
+/* ============================================================================
+   PREFFERS-REDUCED-MOTION OVERRIDE
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 1ms !important;
+    --duration-normal: 1ms !important;
+    --duration-slow: 1ms !important;
+    --duration-slower: 1ms !important;
+    --ease-spring: linear !important;
+    --ease-smooth: linear !important;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================================
+   GLOBAL STYLES USING DESIGN TOKENS
+   ============================================================================ */
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-highlight) var(--color-gray-100);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-highlight);
+  border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-gray-900);
+  font-size: var(--text-body);
+  line-height: var(--line-height-normal);
+}
+
+/* ============================================================================
+   TYPOGRAPHY
+   ============================================================================ */
+
+h1 {
+  font-size: var(--text-h1);
+  line-height: var(--line-height-tight);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--text-h2);
+  line-height: var(--line-height-tight);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: var(--text-h3);
+  line-height: var(--line-height-tight);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--text-h4);
+  line-height: var(--line-height-normal);
+  font-weight: 600;
+}
+
+p {
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================================================
+   BUTTONS & INTERACTIVE ELEMENTS
+   ============================================================================ */
+
+button {
+  transition: var(--transition-normal);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-highlight);
+}
+
+/* ============================================================================
+   FOCUS STATES - Accessibility
+   ============================================================================ */
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--color-highlight);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   FORMS
+   ============================================================================ */
+
+input,
+textarea,
+select {
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  font-size: var(--text-body);
+  transition: var(--transition-normal);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-highlight);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+input::placeholder {
+  color: var(--color-gray-400);
+}
+
+/* ============================================================================
+   CONTAINERS & CARDS
+   ============================================================================ */
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-200);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-highlight);
+}
+
+/* ============================================================================
+   UTILITY: GRADIENT BACKGROUNDS
+   ============================================================================ */
+
+.gradient-navy-to-dark {
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-dark) 100%);
+}
+
+.gradient-accent-to-highlight {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-highlight) 100%);
+}
+
+.gradient-glow {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(3, 105, 161, 0.1) 100%);
+}
+
+/* ============================================================================
+   UTILITY: TEXT COLORS
+   ============================================================================ */
+
+.text-white { color: var(--color-white); }
+.text-navy { color: var(--color-navy); }
+.text-accent { color: var(--color-accent); }
+.text-highlight { color: var(--color-highlight); }
+.text-gray-300 { color: var(--color-gray-300); }
+.text-gray-400 { color: var(--color-gray-400); }

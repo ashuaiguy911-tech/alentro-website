@@ -4,15 +4,17 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
-import { useState } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { ArrowRight, Shield, Cloud, Users, Zap, CheckCircle2, TrendingUp } from "lucide-react";
+import Link from "next/link";
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "ProfessionalService"],
   "@id": "https://alentroglobalservices.com/#organization",
   name: "Alentro Global Services",
-  description:
-    "IT company in Mumbai providing end-to-end IT solutions including IT infrastructure, cloud services, cybersecurity, AMC, helpdesk, and IT consulting for businesses across Mumbai and India.",
+  description: "IT company in Mumbai providing end-to-end IT solutions including IT infrastructure, cloud services, cybersecurity, AMC, helpdesk, and IT consulting for businesses across Mumbai and India.",
   url: "https://alentroglobalservices.com",
   logo: "https://alentroglobalservices.com/logo.png",
   image: "https://alentroglobalservices.com/og-image.png",
@@ -71,24 +73,21 @@ const localBusinessSchema = {
       "@type": "Review",
       author: { "@type": "Person", name: "Rajesh Sharma" },
       reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody:
-        "Alentro Global Services transformed our IT infrastructure within weeks. Their 24/7 support team is incredibly responsive, and the uptime we experience now is exceptional. Truly a reliable partner.",
+      reviewBody: "Alentro Global Services transformed our IT infrastructure within weeks. Their 24/7 support team is incredibly responsive, and the uptime we experience now is exceptional.",
       publisher: { "@type": "Organization", name: "Tata AutoComp Systems" },
     },
     {
       "@type": "Review",
       author: { "@type": "Person", name: "Priya Nambiar" },
       reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody:
-        "We engaged Alentro for our hospital network upgrade and AMC. Their team's expertise in healthcare IT compliance and their rapid helpdesk resolution has made a significant impact on our operations.",
+      reviewBody: "We engaged Alentro for our hospital network upgrade and AMC. Their expertise in healthcare IT compliance and rapid helpdesk resolution has been invaluable.",
       publisher: { "@type": "Organization", name: "Malabar Health Group" },
     },
     {
       "@type": "Review",
       author: { "@type": "Person", name: "Amit Verma" },
       reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody:
-        "The cloud migration Alentro executed for us on AWS was seamless — zero downtime, on budget, and ahead of schedule. Their IT consulting team understood our business goals, not just the technology.",
+      reviewBody: "The cloud migration Alentro executed for us on AWS was seamless — zero downtime, on budget, and ahead of schedule. Truly exceptional service.",
       publisher: { "@type": "Organization", name: "RetailEdge Solutions" },
     },
   ],
@@ -108,42 +107,10 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "How much does IT AMC cost in Mumbai?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "IT AMC costs in Mumbai vary based on the number of devices, scope of coverage, and SLA requirements. Alentro Global Services offers customised AMC plans for businesses of all sizes — from SMEs to large enterprises. Contact us at +91-7045400592 for a free assessment and tailored quote.",
-      },
-    },
-    {
-      "@type": "Question",
       name: "Does Alentro provide 24/7 IT support?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, Alentro Global Services provides 24/7 IT support for businesses in Mumbai and across India. Our helpdesk is available round-the-clock via phone, email, and WhatsApp (+91-7045400592) to keep your IT systems operational at all times.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Does Alentro offer cloud migration services?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, Alentro Global Services provides end-to-end cloud migration services across AWS, Microsoft Azure, and Google Cloud Platform (GCP). Our process covers assessment, architecture design, zero-downtime migration execution, and post-migration managed operations.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What cybersecurity services does Alentro provide?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Alentro Global Services provides comprehensive cybersecurity solutions including Next-Generation Firewall deployment, vulnerability assessment, penetration testing, Endpoint Detection and Response (EDR), security policy design, and network intrusion detection.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Does Alentro serve businesses outside Mumbai?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, Alentro Global Services operates Pan-India, serving businesses across multiple sectors with IT solutions tailored to their industry and compliance requirements.",
+        text: "Yes, Alentro Global Services provides 24/7 IT support for businesses in Mumbai and across India. Our helpdesk is available round-the-clock via phone, email, and WhatsApp (+91-7045400592).",
       },
     },
   ],
@@ -162,28 +129,109 @@ const breadcrumbSchema = {
   ],
 };
 
+// Animated counter component
+function AnimatedCounter({ value }: { value: number }) {
+  const [displayValue, setDisplayValue] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const reduced = useReducedMotion();
+
+  useEffect(() => {
+    if (!isInView || reduced) return;
+
+    let start = 0;
+    const duration = 2000;
+    const startTime = Date.now();
+
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      setDisplayValue(Math.floor(value * progress));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setDisplayValue(value);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isInView, value, reduced]);
+
+  return <span ref={ref}>{displayValue}%</span>;
+}
+
+// Service cards data
+const services = [
+  {
+    num: "01",
+    title: "IT Infrastructure",
+    description: "Complete server, network, and infrastructure deployment",
+    icon: Zap,
+    tags: ["Setup", "Monitoring", "Support"],
+  },
+  {
+    num: "02",
+    title: "Data Annotation",
+    description: "AI/ML training data labeling at scale with 99%+ accuracy",
+    icon: Users,
+    tags: ["AI/ML", "Scalable", "Accurate"],
+  },
+  {
+    num: "03",
+    title: "Cloud Services",
+    description: "AWS, Azure, GCP migration and managed operations",
+    icon: Cloud,
+    tags: ["AWS", "Azure", "GCP"],
+  },
+  {
+    num: "04",
+    title: "Cybersecurity",
+    description: "Enterprise firewall, EDR, and compliance solutions",
+    icon: Shield,
+    tags: ["Firewall", "Compliance", "Zero Risk"],
+  },
+  {
+    num: "05",
+    title: "AMC & Helpdesk",
+    description: "24/7 managed IT support with defined SLAs",
+    icon: TrendingUp,
+    tags: ["24/7", "SLA", "Pan-India"],
+  },
+  {
+    num: "06",
+    title: "Staff Augmentation",
+    description: "Pre-screened IT professionals on flexible contracts",
+    icon: Users,
+    tags: ["Contract", "Direct", "Flexi"],
+  },
+];
+
 export default function Home() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    industry: "",
-    service: "",
-    message: "",
-  });
+  const reduced = useReducedMotion();
 
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you! We'll get back to you soon.");
-    setFormData({ name: "", email: "", phone: "", company: "", industry: "", service: "", message: "" });
-  };
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  } as const;
 
   return (
     <>
@@ -195,301 +243,305 @@ export default function Home() {
       <Navbar />
 
       <main className="w-full">
-        {/* HERO SECTION */}
-        <section className="relative w-full bg-gradient-to-br from-[#0F1F3D] to-[#1a2e52] text-white py-24 md:py-40 overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#38BDF8] rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#0369A1] rounded-full blur-3xl"></div>
+        {/* ====================================================================
+            HERO SECTION - PREMIUM AWWWARDS QUALITY
+            ==================================================================== */}
+        <section className="relative w-full min-h-[100vh] flex items-center justify-center overflow-hidden pt-[80px]" style={{ backgroundColor: "var(--color-navy)" }}>
+          {/* Animated gradient mesh background */}
+          <style>{`
+            @keyframes float-1 {
+              0%, 100% { transform: translate(0, 0) scale(1); }
+              25% { transform: translate(50px, -50px) scale(1.1); }
+              50% { transform: translate(-30px, 30px) scale(0.9); }
+              75% { transform: translate(60px, 40px) scale(1.05); }
+            }
+            @keyframes float-2 {
+              0%, 100% { transform: translate(0, 0) scale(1); }
+              25% { transform: translate(-40px, 60px) scale(0.95); }
+              50% { transform: translate(40px, -40px) scale(1.1); }
+              75% { transform: translate(-50px, -30px) scale(0.9); }
+            }
+            @keyframes float-3 {
+              0%, 100% { transform: translate(0, 0) scale(1); }
+              25% { transform: translate(30px, 40px) scale(1.05); }
+              50% { transform: translate(-50px, -60px) scale(0.95); }
+              75% { transform: translate(40px, 50px) scale(1.1); }
+            }
+            .blob-1 { animation: float-1 20s infinite; }
+            .blob-2 { animation: float-2 24s infinite; }
+            .blob-3 { animation: float-3 28s infinite; }
+          `}</style>
+
+          {/* Background blobs */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="blob-1 absolute top-0 right-0 w-96 h-96 rounded-full" style={{ background: "radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%)", filter: "blur(60px)" }} aria-hidden="true" />
+            <div className="blob-2 absolute bottom-20 left-10 w-80 h-80 rounded-full" style={{ background: "radial-gradient(circle, rgba(3, 105, 161, 0.15) 0%, transparent 70%)", filter: "blur(60px)" }} aria-hidden="true" />
+            <div className="blob-3 absolute top-1/3 left-1/4 w-72 h-72 rounded-full" style={{ background: "radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%)", filter: "blur(60px)" }} aria-hidden="true" />
           </div>
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                Enterprise IT Solutions for Every Business
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-                From infrastructure to cloud, cybersecurity to staff augmentation.
-                Alentro Global Services delivers comprehensive IT solutions across India.
-              </p>
-              <div className="flex gap-4 justify-center flex-wrap">
-                <button className="bg-[#38BDF8] hover:bg-[#0369A1] text-[#0F1F3D] font-bold py-3 px-8 rounded-lg transition duration-200">
-                  Get Free Consultation
-                </button>
-                <button className="border-2 border-[#38BDF8] text-[#38BDF8] hover:bg-[#38BDF8] hover:text-[#0F1F3D] font-bold py-3 px-8 rounded-lg transition duration-200">
-                  Explore Services
-                </button>
+
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0" style={{
+            backgroundImage: "linear-gradient(rgba(56, 189, 248, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.02) 1px, transparent 1px)",
+            backgroundSize: "50px 50px",
+          }} aria-hidden="true" />
+
+          {/* Content */}
+          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
+            {/* Badge */}
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-8 inline-block"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border" style={{ borderColor: "var(--color-highlight)", backgroundColor: "rgba(56, 189, 248, 0.05)" }}>
+                <span style={{ color: "var(--color-highlight)" }} className="text-sm font-medium">India's Trusted IT Partner 🇮🇳</span>
               </div>
-            </div>
+            </motion.div>
+
+            {/* Heading */}
+            <motion.div
+              initial={reduced ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <h1 style={{ color: "var(--color-white)" }} className="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                Right IT Support.{" "}
+                <span style={{ color: "var(--color-highlight)" }}>Any Industry.</span>
+                <br />
+                Always Reliable.
+              </h1>
+            </motion.div>
+
+            {/* Subheading */}
+            <motion.p
+              initial={reduced ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="max-w-2xl mx-auto mb-10 text-lg md:text-xl"
+              style={{ color: "var(--color-gray-300)" }}
+            >
+              24/7 IT support, cloud migration, cybersecurity, and data annotation services for businesses across India.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+            >
+              <motion.button
+                whileHover={reduced ? {} : { scale: 1.02 }}
+                whileTap={reduced ? {} : { scale: 0.98 }}
+                className="px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 text-white"
+                style={{ background: "linear-gradient(135deg, var(--color-accent) 0%, var(--color-highlight) 100%)" }}
+              >
+                Get IT Support <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <motion.button
+                whileHover={reduced ? {} : { scale: 1.02 }}
+                whileTap={reduced ? {} : { scale: 0.98 }}
+                className="px-8 py-4 rounded-lg font-semibold border-2"
+                style={{ borderColor: "var(--color-highlight)", color: "var(--color-highlight)" }}
+              >
+                Explore Services
+              </motion.button>
+            </motion.div>
+
+            {/* Stats Row */}
+            <motion.div
+              variants={containerVariants}
+              initial={reduced ? false : "hidden"}
+              animate="visible"
+              className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            >
+              {[
+                { label: "Client Uptime", value: 99 },
+                { label: "Response Time", value: 4, unit: "hrs" },
+                { label: "Pan-India Reach", value: 15, unit: "states" },
+                { label: "AI Data Labeled", value: 10, unit: "M+" },
+              ].map((stat, i) => (
+                <motion.div key={i} variants={itemVariants} className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: "var(--color-highlight)" }}>
+                    {stat.unit ? (
+                      <>
+                        <AnimatedCounter value={stat.value} />
+                        <span className="text-xl">{stat.unit}</span>
+                      </>
+                    ) : (
+                      <>
+                        <AnimatedCounter value={stat.value} />
+                        <span className="text-xl">%</span>
+                      </>
+                    )}
+                  </div>
+                  <p className="text-sm" style={{ color: "var(--color-gray-400)" }}>
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
-        {/* HOW IT WORKS - 4 STEPS */}
-        <section className="w-full py-20 md:py-28 bg-white">
+        {/* ====================================================================
+            HOW IT WORKS - PREMIUM PROCESS STRIP
+            ==================================================================== */}
+        <section className="w-full py-20 md:py-28" style={{ backgroundColor: "var(--color-navy-dark)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0F1F3D] mb-4">How We Work</h2>
-              <p className="text-lg text-gray-600">Our proven 4-step process delivers results</p>
-            </div>
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+              className="mb-16 text-center"
+            >
+              <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--color-highlight)" }}>
+                OUR PROCESS
+              </p>
+              <h2 className="text-4xl md:text-5xl font-bold" style={{ color: "var(--color-white)" }}>
+                How We Deliver Excellence
+              </h2>
+            </motion.div>
 
             <div className="grid md:grid-cols-4 gap-8">
-              {[
-                { num: "01", title: "Discovery", desc: "We understand your IT challenges, current infrastructure, and business goals." },
-                { num: "02", title: "Assessment", desc: "Comprehensive audit of systems, security posture, and optimization opportunities." },
-                { num: "03", title: "Implementation", desc: "Strategic rollout with minimal disruption and continuous stakeholder communication." },
-                { num: "04", title: "Support", desc: "24/7 monitoring, maintenance, and proactive optimization for peak performance." },
-              ].map((step, idx) => (
-                <div key={idx} className="relative">
-                  <div className="bg-gradient-to-br from-[#0369A1] to-[#0F1F3D] text-white p-8 rounded-lg h-full hover:shadow-xl transition duration-200">
-                    <div className="text-5xl font-bold mb-4 opacity-20">{step.num}</div>
-                    <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-gray-100">{step.desc}</p>
+              {["Discovery", "Assessment", "Implementation", "Support"].map((step, i) => (
+                <motion.div
+                  key={i}
+                  initial={reduced ? false : { opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="relative"
+                >
+                  <div className="rounded-lg p-8" style={{ backgroundColor: "var(--color-navy-light)", border: "1px solid rgba(56, 189, 248, 0.1)" }}>
+                    <div className="text-5xl font-bold mb-4 opacity-20" style={{ color: "var(--color-highlight)" }}>
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
+                    <h3 className="text-xl font-bold mb-3" style={{ color: "var(--color-white)" }}>
+                      {step}
+                    </h3>
+                    <p style={{ color: "var(--color-gray-400)" }}>
+                      {i === 0 && "Understand your IT needs and business goals"}
+                      {i === 1 && "Audit systems and identify optimization opportunities"}
+                      {i === 2 && "Execute with minimal disruption and clear communication"}
+                      {i === 3 && "24/7 monitoring and proactive support"}
+                    </p>
                   </div>
-                  {idx < 3 && <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-1 bg-[#38BDF8]"></div>}
-                </div>
+                  {i < 3 && (
+                    <div
+                      className="hidden md:block absolute top-1/2 -right-4 w-8 h-1 transform -translate-y-1/2"
+                      style={{ backgroundColor: "var(--color-highlight)" }}
+                      aria-hidden="true"
+                    />
+                  )}
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* SCROLLING TICKER/MARQUEE */}
-        <section className="w-full bg-[#0F1F3D] text-white py-8 overflow-hidden">
-          <div className="relative">
-            <style>{`
-              @keyframes scroll {
-                0% { transform: translateX(100%); }
-                100% { transform: translateX(-100%); }
-              }
-              .ticker {
-                animation: scroll 20s linear infinite;
-              }
-              .ticker:hover {
-                animation-play-state: paused;
-              }
-            `}</style>
-            <div className="ticker flex whitespace-nowrap">
-              {[
-                "✓ 24/7 Managed IT Support",
-                "✓ Pan-India Operations",
-                "✓ Cloud Migration Expert",
-                "✓ Cybersecurity Specialist",
-                "✓ 100% Data Quality",
-                "✓ Zero Compliance Risk",
-              ].map((item, idx) => (
-                <span key={idx} className="text-lg font-semibold px-8 py-4">
-                  {item}
-                </span>
-              ))}
-              {[
-                "✓ 24/7 Managed IT Support",
-                "✓ Pan-India Operations",
-                "✓ Cloud Migration Expert",
-                "✓ Cybersecurity Specialist",
-                "✓ 100% Data Quality",
-                "✓ Zero Compliance Risk",
-              ].map((item, idx) => (
-                <span key={`dup-${idx}`} className="text-lg font-semibold px-8 py-4">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SERVICES - 6 NUMBERED CARDS */}
-        <section className="w-full py-20 md:py-28 bg-gray-50">
+        {/* ====================================================================
+            SERVICES - PREMIUM GRID
+            ==================================================================== */}
+        <section className="w-full py-20 md:py-28" style={{ backgroundColor: "var(--color-white)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0F1F3D] mb-4">Our Services</h2>
-              <p className="text-lg text-gray-600">Comprehensive IT solutions for modern businesses</p>
-            </div>
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+              className="mb-16 text-center"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "var(--color-navy)" }}>
+                Our Premium Services
+              </h2>
+              <p style={{ color: "var(--color-gray-600)" }} className="text-lg">
+                Enterprise-grade IT solutions tailored to your industry
+              </p>
+            </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                { num: "01", title: "IT Infrastructure Setup", tags: ["Networks", "Servers", "Hardware"] },
-                { num: "02", title: "Data Annotation Services", tags: ["AI/ML", "Data Labeling", "Quality Assured"] },
-                { num: "03", title: "Cloud Services", tags: ["AWS", "Azure", "Migration"] },
-                { num: "04", title: "Cybersecurity Solutions", tags: ["Firewall", "EDR", "Compliance"] },
-                { num: "05", title: "AMC & Helpdesk", tags: ["Support", "Maintenance", "24/7"] },
-                { num: "06", title: "Staff Augmentation", tags: ["Talent", "Skilled Professionals", "Flexible"] },
-              ].map((service, idx) => (
-                <div key={idx} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-200">
-                  <div className="bg-gradient-to-r from-[#0369A1] to-[#38BDF8] h-2"></div>
-                  <div className="p-8">
-                    <div className="text-4xl font-bold text-[#38BDF8] mb-3">{service.num}</div>
-                    <h3 className="text-2xl font-bold text-[#0F1F3D] mb-4">{service.title}</h3>
-                    <div className="flex flex-wrap gap-2">
+            <motion.div
+              variants={containerVariants}
+              initial={reduced ? false : "hidden"}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {services.map((service, i) => {
+                const Icon = service.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    variants={itemVariants}
+                    whileHover={reduced ? {} : { translateY: -4 }}
+                    className="rounded-xl p-8 transition-all duration-300"
+                    style={{
+                      backgroundColor: "var(--color-white)",
+                      border: "1px solid var(--color-gray-200)",
+                      boxShadow: "0 4px 16px rgba(15, 31, 61, 0.08)",
+                    }}
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="text-5xl font-bold opacity-30" style={{ color: "var(--color-highlight)" }}>
+                        {service.num}
+                      </div>
+                      <Icon className="w-8 h-8" style={{ color: "var(--color-accent)" }} />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3" style={{ color: "var(--color-navy)" }}>
+                      {service.title}
+                    </h3>
+                    <p className="mb-6" style={{ color: "var(--color-gray-600)" }}>
+                      {service.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {service.tags.map((tag, tagIdx) => (
-                        <span key={tagIdx} className="bg-[#0369A1] bg-opacity-10 text-[#0369A1] px-3 py-1 rounded-full text-sm font-medium">
+                        <span
+                          key={tagIdx}
+                          className="text-xs font-medium px-3 py-1 rounded-full"
+                          style={{ backgroundColor: "rgba(3, 105, 161, 0.08)", color: "var(--color-accent)" }}
+                        >
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <a href="#contact" className="text-[#0369A1] font-semibold mt-6 inline-block hover:text-[#38BDF8]">
-                      Learn More →
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
+                    <Link href={`/services/${service.title.toLowerCase().replace(/\s+/g, "-")}`} className="font-semibold flex items-center gap-2" style={{ color: "var(--color-accent)" }}>
+                      Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </div>
         </section>
 
-        {/* INDUSTRIES - 8 CARDS */}
-        <section className="w-full py-20 md:py-28 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0F1F3D] mb-4">Industries We Serve</h2>
-              <p className="text-lg text-gray-600">Specialized IT solutions across sectors</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { num: "01", name: "IT & Technology" },
-                { num: "02", name: "Manufacturing" },
-                { num: "03", name: "Healthcare" },
-                { num: "04", name: "BFSI" },
-                { num: "05", name: "BPO & KPO" },
-                { num: "06", name: "Education" },
-                { num: "07", name: "Government" },
-                { num: "08", name: "Retail & E-commerce" },
-              ].map((industry, idx) => (
-                <div key={idx} className="bg-gradient-to-br from-[#0F1F3D] to-[#1a2e52] text-white p-8 rounded-lg text-center hover:shadow-lg transition duration-200">
-                  <div className="text-4xl font-bold mb-2 text-[#38BDF8]">{industry.num}</div>
-                  <h3 className="text-xl font-bold">{industry.name}</h3>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* WHY CHOOSE US - 6 FEATURES */}
-        <section className="w-full py-20 md:py-28 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0F1F3D] mb-4">Why Choose Alentro</h2>
-              <p className="text-lg text-gray-600">What sets us apart from the competition</p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { title: "Pre-screened Talent", desc: "Rigorous selection process ensures only the best professionals join our team." },
-                { title: "Pan-India Reach", desc: "Operations and support available across all major cities and regions in India." },
-                { title: "Zero Compliance Risk", desc: "100% adherence to data protection, security standards, and regulatory requirements." },
-                { title: "Scalable Engagement", desc: "Flexible models that grow and adapt to your changing business needs." },
-                { title: "24/7 Support", desc: "Round-the-clock availability ensures your operations never stop." },
-                { title: "Data Quality First", desc: "Committed to delivering 100% accuracy and quality in every engagement." },
-              ].map((feature, idx) => (
-                <div key={idx} className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-200">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#0369A1] to-[#38BDF8] rounded-lg mb-4 flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">{idx + 1}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-[#0F1F3D] mb-3">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CONTACT SECTION - SPLIT LAYOUT */}
-        <section id="contact" className="w-full py-20 md:py-28 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              {/* Left: Contact Info */}
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#0F1F3D] mb-8">Get in Touch</h2>
-                <div className="space-y-8">
-                  <div>
-                    <h3 className="text-lg font-bold text-[#0F1F3D] mb-2">Phone</h3>
-                    <p className="text-gray-600">+91-7045400592</p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-[#0F1F3D] mb-2">Email</h3>
-                    <p className="text-gray-600">info@alentroglobal.com</p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-[#0F1F3D] mb-2">Location</h3>
-                    <p className="text-gray-600">Mumbai, Maharashtra<br/>India</p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-[#0F1F3D] mb-2">Hours</h3>
-                    <p className="text-gray-600">24/7 Support Available</p>
-                  </div>
-                  <div className="pt-4">
-                    <a href="https://wa.me/917045400592" target="_blank" rel="noopener noreferrer"
-                       className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
-                      Chat on WhatsApp
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: Contact Form */}
-              <div className="bg-gray-50 p-8 rounded-lg">
-                <h3 className="text-2xl font-bold text-[#0F1F3D] mb-6">Send us a Message</h3>
-                <form onSubmit={handleFormSubmit} className="space-y-4">
-                  <div>
-                    <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleFormChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0369A1]" required />
-                  </div>
-                  <div>
-                    <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleFormChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0369A1]" required />
-                  </div>
-                  <div>
-                    <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleFormChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0369A1]" required />
-                  </div>
-                  <div>
-                    <input type="text" name="company" placeholder="Company Name" value={formData.company} onChange={handleFormChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0369A1]" />
-                  </div>
-                  <div>
-                    <select name="industry" value={formData.industry} onChange={handleFormChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0369A1]">
-                      <option value="">Select Industry</option>
-                      <option>IT & Technology</option>
-                      <option>Manufacturing</option>
-                      <option>Healthcare</option>
-                      <option>BFSI</option>
-                      <option>Education</option>
-                      <option>Retail & E-commerce</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div>
-                    <select name="service" value={formData.service} onChange={handleFormChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0369A1]">
-                      <option value="">Select Service</option>
-                      <option>IT Infrastructure</option>
-                      <option>Data Annotation</option>
-                      <option>Cloud Services</option>
-                      <option>Cybersecurity</option>
-                      <option>AMC & Helpdesk</option>
-                      <option>Staff Augmentation</option>
-                    </select>
-                  </div>
-                  <div>
-                    <textarea name="message" placeholder="Your Message" rows={4} value={formData.message} onChange={handleFormChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0369A1]"></textarea>
-                  </div>
-                  <button type="submit" className="w-full bg-gradient-to-r from-[#0369A1] to-[#38BDF8] text-white font-bold py-3 rounded-lg hover:opacity-90 transition duration-200">
-                    Send Message
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA BANNER */}
-        <section className="w-full bg-gradient-to-r from-[#0F1F3D] to-[#0369A1] text-white py-16 md:py-24">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your IT Infrastructure?</h2>
-            <p className="text-xl mb-8 text-gray-200">Let's discuss how Alentro can help your business grow with reliable IT solutions.</p>
-            <button className="bg-[#38BDF8] hover:bg-white text-[#0F1F3D] font-bold py-4 px-10 rounded-lg text-lg transition duration-200">
-              Schedule Free Consultation
-            </button>
-          </div>
+        {/* ====================================================================
+            CTA SECTION - CALL TO ACTION
+            ==================================================================== */}
+        <section className="w-full py-20 md:py-28" style={{ background: "linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-dark) 100%)" }}>
+          <motion.div
+            initial={reduced ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: "var(--color-white)" }}>
+              Ready to Transform Your IT?
+            </h2>
+            <p className="text-lg mb-10" style={{ color: "var(--color-gray-300)" }}>
+              Let's discuss how Alentro can help your business grow with reliable, scalable IT solutions.
+            </p>
+            <motion.button
+              whileHover={reduced ? {} : { scale: 1.04 }}
+              whileTap={reduced ? {} : { scale: 0.96 }}
+              className="px-10 py-4 rounded-lg font-semibold text-lg"
+              style={{ backgroundColor: "var(--color-highlight)", color: "var(--color-navy)" }}
+            >
+              Schedule Free Consultation <ArrowRight className="inline ml-2 w-5 h-5" />
+            </motion.button>
+          </motion.div>
         </section>
       </main>
 
