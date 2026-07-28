@@ -653,7 +653,7 @@ export default function Home() {
               {/* Right: Stat + CTA Button */}
               <div className="flex flex-col items-center md:items-end gap-4">
                 <p style={{ color: "var(--color-gray-300)" }} className="text-center md:text-right">
-                  500+ Clients Served across India
+                  200+ Clients Served Across India
                 </p>
                 <Link
                   href="#contact"
@@ -836,7 +836,7 @@ export default function Home() {
               style={{ borderColor: "rgba(56,189,248,0.2)" }}
             >
               {[
-                { value: 500, suffix: "+", label: "Clients Served Across India" },
+                { value: 200, suffix: "+", label: "Clients Served Across India" },
                 { value: 9, suffix: "+", label: "IT Services Under One Roof" },
                 { value: 4, suffix: " hrs", label: "Average Response SLA" },
                 { value: 100, suffix: "%", label: "Compliance Rate" },
