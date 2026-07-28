@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     canonical: "https://alentroglobalservices.com",
   },
   verification: {
-    google: "z1mXmW6M_NsHpunXDZk5FRyiHx39_7kCgQwjTvAOpx8",
+    google: "xlyC9_WV0pCdEG0Sr7Q4xkF7j6KXszl-HJAV3cN69pk",
   },
   openGraph: {
     type: "website",
