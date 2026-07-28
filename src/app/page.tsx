@@ -605,6 +605,283 @@ export default function Home() {
         </section>
 
         {/* ====================================================================
+            HOW ALENTRO WORKS - PROCESS FLOW SECTION
+            ==================================================================== */}
+        <section className="w-full py-20 md:py-28" style={{ backgroundColor: "#0F1F3D" }}>
+          {/* Animated grid background */}
+          <div className="absolute inset-0 opacity-5">
+            <div
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(56,189,248,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.1) 1px, transparent 1px)",
+                backgroundSize: "50px 50px",
+              }}
+            />
+          </div>
+
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* PART 1: TOP ROW - Active Badge + Heading + Stat + CTA */}
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col md:flex-row items-center justify-between mb-16 gap-8"
+            >
+              {/* Left: Active Badge + Heading */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="relative w-3 h-3">
+                    <div
+                      className="absolute inset-0 rounded-full animate-pulse"
+                      style={{ backgroundColor: "#10b981" }}
+                    />
+                    <div
+                      className="absolute inset-0 rounded-full"
+                      style={{ backgroundColor: "#10b981", opacity: 0.3 }}
+                    />
+                  </div>
+                  <span style={{ color: "#10b981" }} className="text-xs font-bold uppercase tracking-wider">
+                    Active Now
+                  </span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white">
+                  How Alentro <span style={{ color: "var(--color-highlight)" }}>Works</span>
+                </h2>
+              </div>
+
+              {/* Right: Stat + CTA Button */}
+              <div className="flex flex-col items-center md:items-end gap-4">
+                <p style={{ color: "var(--color-gray-300)" }} className="text-center md:text-right">
+                  500+ Clients Served across India
+                </p>
+                <Link
+                  href="#contact"
+                  className="px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105"
+                  style={{
+                    backgroundColor: "var(--color-highlight)",
+                    color: "#0F1F3D",
+                  }}
+                >
+                  Start Your IT Journey →
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* PART 2: STEP CARDS ROW */}
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12"
+            >
+              {[
+                {
+                  num: "01",
+                  title: "You Share a Requirement",
+                  badge: "Brief",
+                  badgeColor: "#3b82f6",
+                  description:
+                    "IT scope, headcount, location, timeline — tell us what you need, we handle the rest.",
+                },
+                {
+                  num: "02",
+                  title: "We Assess & Scope",
+                  badge: "Verified",
+                  badgeColor: "#eab308",
+                  description:
+                    "IT audit · Skills assessment · Solution fitment — we find the right fix fast.",
+                },
+                {
+                  num: "03",
+                  title: "You Approve. We Deploy.",
+                  badge: "7 Days",
+                  badgeColor: "#10b981",
+                  description:
+                    "Avg. 7-14 days deployment — zero disruption to your existing operations.",
+                },
+                {
+                  num: "04",
+                  title: "Ongoing Support & Compliance",
+                  badge: "100%",
+                  badgeColor: "#a855f7",
+                  description:
+                    "SLA monitoring · 24/7 helpdesk · Zero compliance risk — all managed by Alentro.",
+                },
+              ].map((step, i) => (
+                <motion.div
+                  key={i}
+                  variants={itemVariants}
+                  className="relative p-6 rounded-lg backdrop-blur-sm transition-all hover:scale-105"
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.03)",
+                    border: "1px solid rgba(56,189,248,0.15)",
+                  }}
+                >
+                  {/* Status Badge */}
+                  <div className="absolute top-4 right-4">
+                    <span
+                      className="px-2 py-1 rounded-full text-xs font-bold text-white"
+                      style={{ backgroundColor: step.badgeColor, opacity: 0.8 }}
+                    >
+                      {step.badge}
+                    </span>
+                  </div>
+
+                  {/* Step Number */}
+                  <p style={{ color: "var(--color-highlight)" }} className="text-xs font-bold uppercase mb-3 tracking-wider">
+                    Step {step.num}
+                  </p>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-white mb-3 leading-tight">{step.title}</h3>
+
+                  {/* Description */}
+                  <p style={{ color: "var(--color-gray-300)" }} className="text-sm leading-relaxed">
+                    {step.description}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* PART 3: INDUSTRY TICKER */}
+            <motion.div
+              initial={reduced ? false : { opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mb-12 py-6 overflow-hidden"
+            >
+              <style>{`
+                @keyframes marquee {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-50%); }
+                }
+                .marquee-container {
+                  display: flex;
+                  animation: marquee 30s linear infinite;
+                  white-space: nowrap;
+                  width: max-content;
+                }
+                .marquee-container:hover {
+                  animation-play-state: paused;
+                }
+                @media (prefers-reduced-motion: reduce) {
+                  .marquee-container {
+                    animation: none;
+                  }
+                }
+                .marquee-container > span {
+                  display: inline-block;
+                  margin: 0 2rem;
+                  opacity: 0.6;
+                }
+              `}</style>
+              <div
+                style={{
+                  maskImage: "linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%)",
+                  WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%)",
+                }}
+              >
+                <div className="marquee-container">
+                  {[
+                    "IT & Technology",
+                    "Manufacturing",
+                    "Healthcare",
+                    "BFSI",
+                    "BPO & KPO",
+                    "Education",
+                    "Government",
+                    "Retail & E-commerce",
+                    "Pharmaceuticals",
+                    "Logistics",
+                    "Automotive",
+                    "Real Estate",
+                  ].map((industry, i) => (
+                    <span key={i} style={{ color: "var(--color-gray-400)" }} className="uppercase text-xs font-semibold tracking-widest">
+                      {industry} {i < 11 && "·"}
+                    </span>
+                  ))}
+                  {/* Duplicate for seamless loop */}
+                  {[
+                    "IT & Technology",
+                    "Manufacturing",
+                    "Healthcare",
+                    "BFSI",
+                    "BPO & KPO",
+                    "Education",
+                    "Government",
+                    "Retail & E-commerce",
+                    "Pharmaceuticals",
+                    "Logistics",
+                    "Automotive",
+                    "Real Estate",
+                  ].map((industry, i) => (
+                    <span key={`dup-${i}`} style={{ color: "var(--color-gray-400)" }} className="uppercase text-xs font-semibold tracking-widest">
+                      {industry} {i < 11 && "·"}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* PART 4: BOTTOM STATS ROW */}
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-0 mb-12 border-t border-b"
+              style={{ borderColor: "rgba(56,189,248,0.2)" }}
+            >
+              {[
+                { value: 500, suffix: "+", label: "Clients Served Across India" },
+                { value: 9, suffix: "+", label: "IT Services Under One Roof" },
+                { value: 4, suffix: " hrs", label: "Average Response SLA" },
+                { value: 100, suffix: "%", label: "Compliance Rate" },
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  className="text-center py-8 px-4"
+                  style={{
+                    borderRight: i < 3 ? "1px solid rgba(56,189,248,0.1)" : "none",
+                  }}
+                >
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                    <AnimatedCounter value={stat.value} />
+                    <span>{stat.suffix}</span>
+                  </div>
+                  <p style={{ color: "var(--color-gray-400)" }} className="text-xs md:text-sm">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* PART 5: BOTTOM CTA */}
+            <motion.div
+              initial={reduced ? false : { opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-center"
+            >
+              <Link
+                href="#contact"
+                className="inline-block px-8 py-4 rounded-lg font-semibold transition-all hover:scale-105"
+                style={{
+                  backgroundColor: "var(--color-highlight)",
+                  color: "#0F1F3D",
+                }}
+              >
+                Get IT Support Now →
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ====================================================================
             SERVICES - PREMIUM GRID
             ==================================================================== */}
         <section className="w-full py-20 md:py-28" style={{ backgroundColor: "var(--color-white)" }}>
